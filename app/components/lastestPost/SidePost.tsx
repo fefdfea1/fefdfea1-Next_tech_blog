@@ -2,6 +2,7 @@ import { styled } from "@/styled-system/jsx";
 import { lastestPostType } from "@/app/components/lastestPost/LastestPost";
 import Tag from "@/app/components/tag/Tag";
 import Comment from "@/app/components/comment/Comment";
+import { nanoid } from "nanoid";
 
 type propsType = {
   postType: lastestPostType[];
@@ -11,7 +12,7 @@ export default function SidePost(props: propsType) {
   return (
     <SidePostContainer>
       {props.postType.map((item) => (
-        <SidePostItem>
+        <SidePostItem key={nanoid()}>
           <SidePostLeft>
             <SidePostTitle>{item.title}</SidePostTitle>
             <SidePostDesc className="text2Line">{item.Desc}</SidePostDesc>
@@ -33,7 +34,6 @@ const SidePostContainer = styled("div", {
   base: {
     width: "50%",
     height: "100%",
-    maxHeight: "270px",
     display: "flex",
     flexDirection: "column",
     rowGap: "50px",
@@ -57,7 +57,10 @@ const SidePostItem = styled("article", {
 const SidePostLeft = styled("div", {
   base: {
     width: "70%",
-    display: "inline-block",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "column",
     paddingRight: "20px",
   },
 });

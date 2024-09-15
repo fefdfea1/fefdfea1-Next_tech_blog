@@ -1,6 +1,7 @@
 import { styled } from "@/styled-system/jsx";
 import Tag from "@/app/components/tag/Tag";
 import { lastestPostType } from "@/app/components/lastestPost/LastestPost";
+import Comment from "@/app/components/comment/Comment";
 
 type propsType = {
   postType: lastestPostType;
@@ -15,6 +16,10 @@ export default function BigPost(props: propsType) {
       <PostDescContainer>
         <Tag tag={props.postType.tag} />
         <BigPostTitle>{props.postType.title}</BigPostTitle>
+        <BigPostDesc className="bigPostText">{props.postType.Desc}</BigPostDesc>
+        <CommentBox>
+          <Comment commentCount={props.postType.commentCount} />
+        </CommentBox>
       </PostDescContainer>
     </LastPost>
   );
@@ -23,8 +28,8 @@ export default function BigPost(props: propsType) {
 const LastPost = styled("article", {
   base: {
     width: "50%",
-    maxWidth: "704px",
-    minHeight: "100%",
+    maxHeight: "910px",
+    position: "relative",
     borderRadius: "30px",
     overflow: "hidden",
     backgroundColor: "#fff",
@@ -34,7 +39,8 @@ const LastPost = styled("article", {
 const Thumbnail = styled("figure", {
   base: {
     width: "100%",
-    maxHeight: "370px",
+    height: "370px",
+    overflow: "hidden",
   },
 });
 
@@ -55,5 +61,19 @@ const BigPostTitle = styled("p", {
 const BigPostDesc = styled("p", {
   base: {
     width: "100%",
+    maxHeight: "100%",
+    color: "#999",
+    marginTop: "26px",
+    fontSize: "16px",
+    fontWeight: "500",
+    overflow: "hidden",
+  },
+});
+
+const CommentBox = styled("div", {
+  base: {
+    position: "absolute",
+    bottom: "32px",
+    left: "30px",
   },
 });

@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { styled } from "@/styled-system/jsx";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const defaultFont = localFont({
+  src: [
+    {
+      path: "../public/fonts/IBMPlexSansKR-Bold.ttf",
+      weight: "700",
+    },
+    {
+      path: "../public/fonts/IBMPlexSansKR-Medium.ttf",
+      weight: "500",
+    },
+    {
+      path: "../public/fonts/IBMPlexSansKR-Regular.ttf",
+      weight: "400",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -24,10 +31,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
+    <html lang="ko" className={defaultFont.className}>
+      <Body>{children}</Body>
     </html>
   );
 }
+
+const Body = styled("body", {
+  base: {
+    backgroundColor: "primary.02",
+  },
+});

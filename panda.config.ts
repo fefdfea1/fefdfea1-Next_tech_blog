@@ -65,8 +65,8 @@ export default defineConfig({
         },
         postTitle: {
           value: {
-            fontSize: "60px",
-            fontWeight: "400",
+            fontSize: "40px",
+            fontWeight: "700",
           },
         },
         md: {

@@ -3,10 +3,15 @@ import React from "react";
 
 type propsType = {
   tag: string;
+  usePost?: "site";
 };
 
 export default function Tag(props: propsType) {
-  return <SideTag>{props.tag}</SideTag>;
+  return (
+    <SideTag {...(props.usePost && { usePost: props.usePost })}>
+      {props.tag}
+    </SideTag>
+  );
 }
 
 const SideTag = styled("div", {
@@ -21,5 +26,15 @@ const SideTag = styled("div", {
     backgroundColor: "primary.01",
     textStyle: "tag",
     color: "#fff",
+  },
+  variants: {
+    usePost: {
+      site: {
+        width: "auto",
+        height: "28px",
+        display: "inline-flex",
+        padding: "10px 20px",
+      },
+    },
   },
 });

@@ -27,4 +27,12 @@
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
   }
+
+  .swiper-wrapper {
+    min-height: 400px;
+  }
+
+  .gradation {
+    -webkit-background-clip: text;
+  }
 }

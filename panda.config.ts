@@ -25,6 +25,9 @@ export default defineConfig({
             "02": {
               value: "#1E1E1E",
             },
+            "03": {
+              value: "#262626",
+            },
           },
           secondary: {
             "01": {
@@ -65,7 +68,7 @@ export default defineConfig({
         },
         postTitle: {
           value: {
-            fontSize: "40px",
+            fontSize: "35px",
             fontWeight: "700",
           },
         },

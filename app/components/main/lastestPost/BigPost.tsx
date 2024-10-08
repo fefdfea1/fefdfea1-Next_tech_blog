@@ -1,26 +1,38 @@
 import { styled } from "@/styled-system/jsx";
 import Tag from "@/app/components/tag/Tag";
-import { lastestPostType } from "@/app/components/lastestPost/LastestPost";
+import { lastestPostType } from "@/app/components/main/lastestPost/LastestPost";
 import Comment from "@/app/components/comment/Comment";
+import Link from "next/link";
+import { extractContent } from "@/app/page";
 
 type propsType = {
   postType: lastestPostType;
 };
 
 export default function BigPost(props: propsType) {
+  const desc = extractContent(props.postType.content);
+
   return (
     <LastPost>
-      <Thumbnail>
-        <img src="/img/noThumbnail/noImages.png" alt="썸네일 없음" />
-      </Thumbnail>
-      <PostDescContainer>
-        <Tag tag={props.postType.tag} />
-        <BigPostTitle>{props.postType.title}</BigPostTitle>
-        <BigPostDesc className="bigPostText">{props.postType.Desc}</BigPostDesc>
-        <CommentBox>
-          <Comment commentCount={props.postType.commentCount} />
-        </CommentBox>
-      </PostDescContainer>
+      <Link href={`/detail/${props.postType?.slug}`}>
+        <Thumbnail>
+          <img src="/img/noThumbnail/noImages.png" alt="썸네일 없음" />
+        </Thumbnail>
+        <PostDescContainer>
+          <Tag tag={props.postType ? props.postType.tag : "찾을 수 없음"} />
+          <BigPostTitle>
+            {props.postType ? props.postType.title : "찾을 수 없음"}
+          </BigPostTitle>
+          <BigPostDesc className="bigPostText">
+            {props.postType ? desc : "찾을 수 없음"}
+          </BigPostDesc>
+          {/* <CommentBox>
+            <Comment
+              commentCount={props.postType ? props.postType.commentCount : "0"}
+            />
+          </CommentBox> */}
+        </PostDescContainer>
+      </Link>
     </LastPost>
   );
 }
@@ -28,7 +40,7 @@ export default function BigPost(props: propsType) {
 const LastPost = styled("article", {
   base: {
     width: "50%",
-    maxHeight: "910px",
+    minHeight: "700px",
     position: "relative",
     borderRadius: "30px",
     overflow: "hidden",

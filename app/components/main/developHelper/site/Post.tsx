@@ -1,30 +1,43 @@
-"use client";
 import { styled } from "@/styled-system/jsx";
-import { Scrollbar } from "swiper/modules";
 import Tag from "@/app/components/tag/Tag";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
+import Link from "next/link";
 import "swiper/css";
 import "swiper/css/scrollbar";
-export default function Post() {
+import { developSiteItemType } from "@/app/components/main/developHelper/site/DevelopHelperSite";
+import { nanoid } from "nanoid";
+
+type propsType = {
+  developSiteItem: developSiteItemType;
+  desc: string;
+};
+
+export default function Post(props: propsType) {
   return (
-    <Swiper spaceBetween={97} slidesPerView={3} modules={[Scrollbar]} scrollbar>
-      <SwiperSlide>
+    <>
+      <SwiperSlide key={nanoid()}>
         <SitePost>
-          <ImgBox>
-            <img src="/img/noThumbnail/noImages.png" alt="사이트 썸네일" />
-          </ImgBox>
-          <PostDescContainer>
-            <Tag tag={"태그"} usePost="site" />
-            <PostDesc>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Explicabo, quo similique laboriosam illo, debitis minima eligendi
-              quasi reprehenderit tempora ex quia accusantium quibusdam in?
-              Maxime rem odio sapiente veritatis minima.
-            </PostDesc>
-          </PostDescContainer>
+          <Link
+            href={`detail/${props.developSiteItem.category}/${props.developSiteItem.slug}`}
+          >
+            <ImgBox>
+              <img
+                src={
+                  props.developSiteItem.thumbnail
+                    ? props.developSiteItem.thumbnail
+                    : "/img/noThumbnail/noImages.png"
+                }
+                alt="사이트 썸네일"
+              />
+            </ImgBox>
+            <PostDescContainer>
+              <Tag tag={"태그"} usePost="site" />
+              <PostDesc>{}</PostDesc>
+            </PostDescContainer>
+          </Link>
         </SitePost>
       </SwiperSlide>
-    </Swiper>
+    </>
   );
 }
 

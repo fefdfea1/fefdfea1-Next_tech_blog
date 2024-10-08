@@ -53,11 +53,16 @@ const Circle = styled("div", {
 
 const ArrowIconBox = styled("div", {
   base: {
-    width: "60px",
-    height: "60px",
+    width: "50px",
+    height: "50px",
     position: "absolute",
     left: "50%",
-    top: "50%",
+    top: "0",
     transform: "translate(-50%,-50%)",
+
+    "& svg": {
+      width: "100%",
+      height: "100%",
+    },
   },
 });

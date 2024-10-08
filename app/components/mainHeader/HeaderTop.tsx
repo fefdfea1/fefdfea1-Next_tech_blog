@@ -77,6 +77,9 @@ const SearchIconBox = styled("div", {
   base: {
     width: "25px",
     height: "25px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     position: "absolute",
     top: "50%",
     left: "50%",

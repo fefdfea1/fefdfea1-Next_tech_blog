@@ -1,8 +1,9 @@
 import { styled } from "@/styled-system/jsx";
-import { lastestPostType } from "@/app/components/lastestPost/LastestPost";
+import { lastestPostType } from "@/app/components/main/lastestPost/LastestPost";
 import Tag from "@/app/components/tag/Tag";
 import Comment from "@/app/components/comment/Comment";
 import { nanoid } from "nanoid";
+import { extractContent } from "@/app/page";
 
 type propsType = {
   postType: lastestPostType[];
@@ -11,21 +12,32 @@ type propsType = {
 export default function SidePost(props: propsType) {
   return (
     <SidePostContainer>
-      {props.postType.map((item) => (
-        <SidePostItem key={nanoid()}>
-          <SidePostLeft>
-            <SidePostTitle>{item.title}</SidePostTitle>
-            <SidePostDesc className="text2Line">{item.Desc}</SidePostDesc>
-            <SidePostItemBottom>
-              <Tag tag={item.tag} />
-              <Comment commentCount={item.commentCount} />
-            </SidePostItemBottom>
-          </SidePostLeft>
-          <SidePostRight>
-            <img src={item.thumbnailUrl} alt="썸네일" />
-          </SidePostRight>
-        </SidePostItem>
-      ))}
+      {props.postType.map((item, index) => {
+        if (index === 0) return null;
+        const desc = extractContent(item.content);
+        return (
+          <SidePostItem key={nanoid()}>
+            <SidePostLeft>
+              <SidePostTitle>{item.title}</SidePostTitle>
+              <SidePostDesc className="text2Line">{desc}</SidePostDesc>
+              <SidePostItemBottom>
+                <Tag tag={item.tag} />
+                {/* <Comment commentCount={item.commentCount} /> */}
+              </SidePostItemBottom>
+            </SidePostLeft>
+            <SidePostRight>
+              <img
+                src={
+                  item.thumbnail
+                    ? item.thumbnail
+                    : "/img/noThumbnail/noImages.png"
+                }
+                alt="썸네일"
+              />
+            </SidePostRight>
+          </SidePostItem>
+        );
+      })}
     </SidePostContainer>
   );
 }
@@ -45,6 +57,7 @@ const SidePostItem = styled("article", {
     width: "100%",
     maxWidth: "600px",
     maxHeight: "270px",
+    minHeight: "200px",
     position: "relative",
     border: "1px solid black",
     padding: "22px 25px",

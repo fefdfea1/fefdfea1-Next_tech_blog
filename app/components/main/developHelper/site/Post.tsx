@@ -5,39 +5,41 @@ import Link from "next/link";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import { developSiteItemType } from "@/app/components/main/developHelper/site/DevelopHelperSite";
+import { Swiper } from "swiper/react";
 import { nanoid } from "nanoid";
-
+import { Scrollbar } from "swiper/modules";
 type propsType = {
-  developSiteItem: developSiteItemType;
-  desc: string;
+  developSiteItem: developSiteItemType[];
 };
 
 export default function Post(props: propsType) {
   return (
-    <>
-      <SwiperSlide key={nanoid()}>
-        <SitePost>
-          <Link
-            href={`detail/${props.developSiteItem.category}/${props.developSiteItem.slug}`}
-          >
-            <ImgBox>
-              <img
-                src={
-                  props.developSiteItem.thumbnail
-                    ? props.developSiteItem.thumbnail
-                    : "/img/noThumbnail/noImages.png"
-                }
-                alt="사이트 썸네일"
-              />
-            </ImgBox>
-            <PostDescContainer>
-              <Tag tag={"태그"} usePost="site" />
-              <PostDesc>{}</PostDesc>
-            </PostDescContainer>
-          </Link>
-        </SitePost>
-      </SwiperSlide>
-    </>
+    <Swiper spaceBetween={97} slidesPerView={3} modules={[Scrollbar]} scrollbar>
+      {props.developSiteItem.map((item) => {
+        return (
+          <SwiperSlide key={nanoid()}>
+            <SitePost>
+              <Link href={`${item.category}/${item.slug}`}>
+                <ImgBox>
+                  <img
+                    src={
+                      item.thumbnail
+                        ? item.thumbnail
+                        : "/img/noThumbnail/noImages.png"
+                    }
+                    alt="사이트 썸네일"
+                  />
+                </ImgBox>
+                <PostDescContainer>
+                  <Tag tag={"태그"} usePost="site" />
+                  <PostDesc>{item.desc}</PostDesc>
+                </PostDescContainer>
+              </Link>
+            </SitePost>
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
   );
 }
 

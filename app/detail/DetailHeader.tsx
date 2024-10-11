@@ -13,14 +13,12 @@ export default function DetailHeader(props: propsType) {
   return (
     <BackgroundImg>
       <HeaderTop />
-      {/* <Title>{props.title}</Title>
-      <Date>{props.date}</Date> */}
-      <Title>PWA에 대한 설명과 블로그 회고록</Title>
+      <Title>{props.title}</Title>
       <Date>
         <Icon>
           <FontAwesomeIcon icon={faCalendar} />
         </Icon>
-        2024-08-20
+        {props.date}
       </Date>
     </BackgroundImg>
   );

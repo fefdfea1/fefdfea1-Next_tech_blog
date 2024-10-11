@@ -1,12 +1,16 @@
+"use client";
 import { styled } from "@/styled-system/jsx";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { nanoid } from "nanoid";
+import Link from "next/link";
 
 type propsType = {
   siteRefList: string[];
 };
 
 export default function ReferenceSite(props: propsType) {
+  if (props.siteRefList.length === 0) return;
   return (
     <RefSiteContainer>
       <RefTitle>
@@ -16,10 +20,14 @@ export default function ReferenceSite(props: propsType) {
         참고 사이트
       </RefTitle>
       <RefContent>
-        <RefItems>
-          <RefCount>1</RefCount>
-          <RefUrl>ssssssssssssssssssssssss</RefUrl>
-        </RefItems>
+        {props.siteRefList.map((item, index) => (
+          <RefItems key={nanoid()}>
+            <Link href={`${item}`}>
+              <RefCount>{index + 1}</RefCount>
+              <RefUrl>{item}</RefUrl>
+            </Link>
+          </RefItems>
+        ))}
       </RefContent>
     </RefSiteContainer>
   );
@@ -28,9 +36,7 @@ export default function ReferenceSite(props: propsType) {
 const RefSiteContainer = styled("article", {
   base: {
     width: "100%",
-    maxWidth: "960px",
     backgroundColor: "secondary.03",
-    margin: "0 auto",
     marginTop: "300px",
     borderRadius: "10px",
     padding: "10px 0",
@@ -65,6 +71,12 @@ const RefItems = styled("li", {
     borderBottom: "1px solid black",
     "&:last-of-type": {
       border: "0",
+    },
+
+    "& a": {
+      display: "flex",
+      width: "100%",
+      height: "100%",
     },
   },
 });

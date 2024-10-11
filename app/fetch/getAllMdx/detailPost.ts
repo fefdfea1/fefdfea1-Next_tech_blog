@@ -1,10 +1,10 @@
 import fs from "fs";
 import matter from "gray-matter";
-import { lastestPostType } from "@/app/components/main/lastestPost/LastestPost";
+import { postType } from "@/app/page";
 
-export function detailPost(postPath: string) {
+export function getPostDetail(postPath: string) {
   const file = fs.readFileSync(postPath, "utf8");
   const { data, content } = matter(file);
-  const grayMatter = data as lastestPostType;
+  const grayMatter = data as postType;
   return { ...grayMatter, content };
 }

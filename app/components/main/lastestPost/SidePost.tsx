@@ -1,41 +1,44 @@
 import { styled } from "@/styled-system/jsx";
-import { lastestPostType } from "@/app/components/main/lastestPost/LastestPost";
+import { postType } from "@/app/page";
 import Tag from "@/app/components/tag/Tag";
 import Comment from "@/app/components/comment/Comment";
 import { nanoid } from "nanoid";
 import { extractContent } from "@/app/page";
+import Link from "next/link";
 
 type propsType = {
-  postType: lastestPostType[];
+  postType: postType[];
 };
 
 export default function SidePost(props: propsType) {
   return (
     <SidePostContainer>
       {props.postType.map((item, index) => {
-        if (index === 0) return null;
+        if (index === 0 || index >= 4) return null;
         const desc = extractContent(item.content);
         return (
-          <SidePostItem key={nanoid()}>
-            <SidePostLeft>
-              <SidePostTitle>{item.title}</SidePostTitle>
-              <SidePostDesc className="text2Line">{desc}</SidePostDesc>
-              <SidePostItemBottom>
-                <Tag tag={item.tag} />
-                {/* <Comment commentCount={item.commentCount} /> */}
-              </SidePostItemBottom>
-            </SidePostLeft>
-            <SidePostRight>
-              <img
-                src={
-                  item.thumbnail
-                    ? item.thumbnail
-                    : "/img/noThumbnail/noImages.png"
-                }
-                alt="썸네일"
-              />
-            </SidePostRight>
-          </SidePostItem>
+          <Link href={`${item.url}`} key={nanoid()}>
+            <SidePostItem key={nanoid()}>
+              <SidePostLeft>
+                <SidePostTitle>{item.title}</SidePostTitle>
+                <SidePostDesc className="text2Line">{desc}</SidePostDesc>
+                <SidePostItemBottom>
+                  <Tag tag={item.tag} />
+                  {/* <Comment commentCount={item.commentCount} /> */}
+                </SidePostItemBottom>
+              </SidePostLeft>
+              <SidePostRight>
+                <img
+                  src={
+                    item.thumbnail
+                      ? item.thumbnail
+                      : "/img/noThumbnail/noImages.png"
+                  }
+                  alt="썸네일"
+                />
+              </SidePostRight>
+            </SidePostItem>
+          </Link>
         );
       })}
     </SidePostContainer>

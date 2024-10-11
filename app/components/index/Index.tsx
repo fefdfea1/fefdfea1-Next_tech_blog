@@ -1,20 +1,21 @@
+"use client";
 import { styled } from "@/styled-system/jsx";
 import { nanoid } from "nanoid";
+import { useState } from "react";
+import { indexType } from "@/app/page";
+import { useIndex } from "@/app/hooks/indexSet";
 
-type propsType = {
-  IndexItemList: string[];
-};
-
-export default function Index(props: propsType) {
-  if (props.IndexItemList.length === 0) return;
+export default function Index() {
+  const [TitleArray, setTitle] = useState<indexType[]>([]);
+  useIndex(TitleArray, setTitle);
   return (
     <IndexContainer>
       <IndexTitle>목차</IndexTitle>
       <IndexContent>
         <IndexListContainer>
-          {props.IndexItemList.map((item: any) => (
+          {TitleArray.map((item) => (
             <IndexList key={nanoid()}>
-              <IndexAnchor href="#">{item.text}</IndexAnchor>
+              <IndexAnchor href={`#${item.id}`}>{item.text}</IndexAnchor>
             </IndexList>
           ))}
         </IndexListContainer>
@@ -26,12 +27,10 @@ export default function Index(props: propsType) {
 const IndexContainer = styled("div", {
   base: {
     width: "100%",
-    maxWidth: "960px",
     backgroundColor: "secondary.02",
     borderRadius: "10px",
     padding: "13px 8px",
     overflow: "hidden",
-    marginTop: "120px",
     margin: "0 auto",
   },
 });
@@ -73,9 +72,10 @@ const IndexList = styled("li", {
 
 const IndexAnchor = styled("a", {
   base: {
-    display: "block",
     width: "100%",
     height: "100%",
     padding: "0 10px",
+    display: "flex",
+    alignItems: "center",
   },
 });

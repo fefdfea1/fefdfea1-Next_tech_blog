@@ -1,20 +1,16 @@
 import { styled } from "@/styled-system/jsx";
 import Tag from "@/app/components/tag/Tag";
-import { lastestPostType } from "@/app/components/main/lastestPost/LastestPost";
+import { postType } from "@/app/page";
 import Comment from "@/app/components/comment/Comment";
 import Link from "next/link";
-import { extractContent } from "@/app/page";
-
 type propsType = {
-  postType: lastestPostType;
+  postType: postType;
 };
 
 export default function BigPost(props: propsType) {
-  const desc = extractContent(props.postType.content);
-
   return (
     <LastPost>
-      <Link href={`/detail/${props.postType?.slug}`}>
+      <Link href={`${props.postType.url}`}>
         <Thumbnail>
           <img src="/img/noThumbnail/noImages.png" alt="썸네일 없음" />
         </Thumbnail>
@@ -24,7 +20,7 @@ export default function BigPost(props: propsType) {
             {props.postType ? props.postType.title : "찾을 수 없음"}
           </BigPostTitle>
           <BigPostDesc className="bigPostText">
-            {props.postType ? desc : "찾을 수 없음"}
+            {props.postType ? props.postType.desc : "찾을 수 없음"}
           </BigPostDesc>
           {/* <CommentBox>
             <Comment

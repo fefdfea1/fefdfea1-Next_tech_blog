@@ -4,7 +4,7 @@ import { extractContent } from "@/app/page";
 export const GET = async () => {
   const data = [{ data: "" }];
   try {
-    const ReferenceSite = await getPostList("ExtensionPost");
+    const ReferenceSite = await getPostList("DevelopPost");
     ReferenceSite.forEach((item) => {
       item.desc = extractContent(item.content);
     });

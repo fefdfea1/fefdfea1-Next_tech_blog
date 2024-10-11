@@ -3,15 +3,6 @@ import { getPostList } from "@/app/fetch/getAllMdx/getPostList";
 import BigPost from "@/app/components/main/lastestPost/BigPost";
 import SidePost from "@/app/components/main/lastestPost/SidePost";
 
-export type lastestPostType = {
-  title: string;
-  tag: string;
-  commentCount: string;
-  thumbnail: string;
-  slug: string;
-  content: string;
-  category: string;
-};
 
 export default async function LastestPost() {
   const post = await getPostList();

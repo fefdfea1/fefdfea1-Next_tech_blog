@@ -1,19 +1,29 @@
 import { styled } from "@/styled-system/jsx";
 import Tag from "@/app/components/tag/Tag";
 import Comment from "@/app/components/comment/Comment";
-export default function ExtensionPost() {
+import { postType } from "@/app/page";
+import Link from "next/link";
+
+type propsType = {
+  item: postType;
+};
+
+export default function ExtensionPost(props: propsType) {
   return (
     <ExtensionPostContainer>
-      <Anchor href="#">
+      <Link href={`${props.item.url}`}>
         <Thumbnail>
-          <img src="/img/noThumbnail/noImages.png" alt="asdasd" />
+          <img
+            src={`${props.item.thumbnail ? props.item.thumbnail : "/img/noThumbnail/noImages.png"}`}
+            alt="익스텐션 썸네일"
+          />
         </Thumbnail>
         <ExtensionDesc>
-          <Tag tag={"태그"} usePost="site" />
-          <PostDesc>adasdadasdasssssssssssssssssssssssssssssd</PostDesc>
+          <Tag tag={`${props.item.tag}`} usePost="site" />
+          <PostDesc>{props.item.desc}</PostDesc>
           <Comment commentCount={"15"} />
         </ExtensionDesc>
-      </Anchor>
+      </Link>
     </ExtensionPostContainer>
   );
 }
@@ -24,14 +34,12 @@ const ExtensionPostContainer = styled("article", {
     maxWidth: "407px",
     borderRadius: "15px",
     overflow: "hidden",
-  },
-});
 
-const Anchor = styled("a", {
-  base: {
-    width: "100%",
-    height: "100%",
-    display: "block",
+    "& > a": {
+      width: "100%",
+      height: "100%",
+      display: "block",
+    },
   },
 });
 
@@ -47,7 +55,6 @@ const Thumbnail = styled("figure", {
 const ExtensionDesc = styled("div", {
   base: {
     width: "100%",
-
     backgroundColor: "#D9D9D9",
     padding: "15px 19px",
   },

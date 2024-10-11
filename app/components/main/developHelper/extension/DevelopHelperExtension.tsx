@@ -1,19 +1,22 @@
 import { styled } from "@/styled-system/jsx";
 import ExtensionPost from "@/app/components/main/developHelper/extension/ExtensionPost";
+import { postType } from "@/app/page";
+import { nanoid } from "nanoid";
 
-export default function DevelopHelperExtension() {
+type propsType = {
+  helperExtension: postType[];
+};
+
+export default function DevelopHelperExtension(props: propsType) {
   return (
     <ExtensionContainer>
       <ExtensionTitle className="gradation">
         유용한 익스텐션 모음
       </ExtensionTitle>
       <ExtensionPostContainer>
-        <ExtensionPost />
-        <ExtensionPost />
-        <ExtensionPost />
-        <ExtensionPost />
-        <ExtensionPost />
-        <ExtensionPost />
+        {props.helperExtension.map((item) => (
+          <ExtensionPost item={item} key={nanoid()} />
+        ))}
       </ExtensionPostContainer>
     </ExtensionContainer>
   );
@@ -32,7 +35,7 @@ const ExtensionPostContainer = styled("div", {
     width: "100%",
     display: "flex",
     flexWrap: "wrap",
-    columnGap: "90px",
+    columnGap: "44px",
     rowGap: "96px",
   },
 });

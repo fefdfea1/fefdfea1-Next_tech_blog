@@ -3,13 +3,18 @@ import { styled } from "@/styled-system/jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useIndex } from "@/app/hooks/indexSet";
+import { indexType } from "@/app/page";
+import { nanoid } from "nanoid";
 
 export default function List() {
+  const [TitleArray, setTitle] = useState<indexType[]>([]);
   useEffect(() => {
     window.addEventListener("scroll", listScrollPosition);
     return () => window.removeEventListener("scroll", listScrollPosition);
   }, []);
+  useIndex(TitleArray, setTitle);
   return (
     <ListContainer className="listContainer">
       <ListClickBox>
@@ -18,14 +23,16 @@ export default function List() {
         </ListIcon>
       </ListClickBox>
       <ItemListContainer>
-        <ItemList>
-          <Anchor href="#">
-            <CaretDownIcon>
-              <FontAwesomeIcon icon={faCaretDown} />
-            </CaretDownIcon>
-            ㅁㄴㅇㅁㄴㅇㅁㄴㅇ
-          </Anchor>
-        </ItemList>
+        {TitleArray.map((item) => (
+          <ItemList key={nanoid()}>
+            <Anchor href={`#${item.id}`}>
+              <CaretDownIcon>
+                <FontAwesomeIcon icon={faCaretDown} />
+              </CaretDownIcon>
+              {item.text}
+            </Anchor>
+          </ItemList>
+        ))}
       </ItemListContainer>
     </ListContainer>
   );
@@ -34,7 +41,7 @@ export default function List() {
 function listScrollPosition() {
   const scrollTop = window.scrollY;
   const listContainer = document.querySelector(".listContainer") as HTMLElement;
-  if (scrollTop >= 700) {
+  if (scrollTop >= 400) {
     listContainer.style.opacity = "1";
   } else {
     listContainer.style.opacity = "0";
@@ -59,6 +66,7 @@ const ListContainer = styled("aside", {
 const ItemListContainer = styled("ul", {
   base: {
     width: "100%",
+    lineHeight: "30px",
   },
 });
 
@@ -110,7 +118,7 @@ const ListIcon = styled("span", {
     width: "25px",
     height: "25px",
     display: "inline-block",
-    color: "black",
+    color: "#fff",
     position: "absolute",
     top: "50%",
     left: "50%",

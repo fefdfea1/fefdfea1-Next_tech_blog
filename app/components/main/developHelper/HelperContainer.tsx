@@ -6,7 +6,7 @@ import { getPostList } from "@/app/fetch/getAllMdx/getPostList";
 export default async function HelperContainer() {
   const helperExtension = await getPostList("ExtensionPost");
   return (
-    <Helper>
+    <Helper className="developSite">
       <DevelopHelperSite />
       <DevelopHelperExtension helperExtension={helperExtension} />
     </Helper>

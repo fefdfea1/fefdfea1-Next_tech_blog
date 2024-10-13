@@ -10,7 +10,7 @@ type propsType = {
 
 export default function ExtensionPost(props: propsType) {
   return (
-    <ExtensionPostContainer>
+    <ExtensionPostContainer className="extension">
       <Link href={`${props.item.url}`}>
         <Thumbnail>
           <img
@@ -30,8 +30,7 @@ export default function ExtensionPost(props: propsType) {
 
 const ExtensionPostContainer = styled("article", {
   base: {
-    width: "100%",
-    maxWidth: "407px",
+    width: "32%",
     borderRadius: "15px",
     overflow: "hidden",
 

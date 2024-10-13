@@ -38,6 +38,13 @@ export function extractContent(mdxString: string) {
 
   content = content.replace(/<[^>]+>/g, "").trim();
 
+  content = content
+    .replace(
+      /```javascript[\s\S]*?const MdxComponents:\s*MDXComponents\s*=\s*{[^}]*};[\s\S]*?```/g,
+      ""
+    )
+    .trim();
+
   // 본문 내용 반환
   return content;
 }

@@ -12,13 +12,13 @@ type propsType = {
 
 export default function SidePost(props: propsType) {
   return (
-    <SidePostContainer>
+    <SidePostContainer className="sidePost">
       {props.postType.map((item, index) => {
         if (index === 0 || index >= 4) return null;
         const desc = extractContent(item.content);
         return (
           <Link href={`${item.url}`} key={nanoid()}>
-            <SidePostItem key={nanoid()}>
+            <SidePostItem key={nanoid()} className="sidePost">
               <SidePostLeft>
                 <SidePostTitle>{item.title}</SidePostTitle>
                 <SidePostDesc className="text2Line">{desc}</SidePostDesc>

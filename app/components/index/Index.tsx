@@ -4,10 +4,13 @@ import { nanoid } from "nanoid";
 import { useState } from "react";
 import { indexType } from "@/app/page";
 import { useIndex } from "@/app/hooks/indexSet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function Index() {
   const [TitleArray, setTitle] = useState<indexType[]>([]);
   useIndex(TitleArray, setTitle);
+  if (TitleArray.length === 0) return;
   return (
     <IndexContainer>
       <IndexTitle>목차</IndexTitle>
@@ -15,6 +18,7 @@ export default function Index() {
         <IndexListContainer>
           {TitleArray.map((item) => (
             <IndexList key={nanoid()}>
+              <FontAwesomeIcon icon={faChevronDown} />
               <IndexAnchor href={`#${item.id}`}>{item.text}</IndexAnchor>
             </IndexList>
           ))}
@@ -62,7 +66,11 @@ const IndexList = styled("li", {
     width: "100%",
     height: "40px",
     fontSize: "20px",
+    fontWeight: "700",
     borderBottom: "1px solid black",
+    display: "flex",
+    alignItems: "center",
+    padding: "0 14px",
 
     "&:last-of-type": {
       borderBottom: "0",

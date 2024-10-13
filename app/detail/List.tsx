@@ -3,21 +3,22 @@ import { styled } from "@/styled-system/jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { useIndex } from "@/app/hooks/indexSet";
 import { indexType } from "@/app/page";
 import { nanoid } from "nanoid";
 
 export default function List() {
   const [TitleArray, setTitle] = useState<indexType[]>([]);
+  const ListContainerRef = useRef(null);
   useEffect(() => {
     window.addEventListener("scroll", listScrollPosition);
     return () => window.removeEventListener("scroll", listScrollPosition);
   }, []);
   useIndex(TitleArray, setTitle);
   return (
-    <ListContainer className="listContainer">
-      <ListClickBox>
+    <ListContainer className="listContainer active" ref={ListContainerRef}>
+      <ListClickBox onClick={() => clickHandler(ListContainerRef)}>
         <ListIcon>
           <FontAwesomeIcon icon={faList} />
         </ListIcon>
@@ -36,6 +37,15 @@ export default function List() {
       </ItemListContainer>
     </ListContainer>
   );
+}
+
+function clickHandler(ListContainerRef: MutableRefObject<null>) {
+  const ListContainer = ListContainerRef.current as unknown as HTMLElement;
+  if (ListContainer.classList.contains("active")) {
+    ListContainer.classList.remove("active");
+  } else {
+    ListContainer.classList.add("active");
+  }
 }
 
 function listScrollPosition() {
@@ -57,9 +67,12 @@ const ListContainer = styled("aside", {
     right: "200px",
     backgroundColor: "primary.03",
     borderRadius: "20px",
-    padding: "25px 20px",
     opacity: "0",
     transition: "0.3s opacity",
+
+    "&.active ul": {
+      display: "block",
+    },
   },
 });
 
@@ -67,6 +80,8 @@ const ItemListContainer = styled("ul", {
   base: {
     width: "100%",
     lineHeight: "30px",
+    padding: "25px 20px",
+    display: "none",
   },
 });
 

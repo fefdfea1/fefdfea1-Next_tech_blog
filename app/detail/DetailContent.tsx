@@ -25,7 +25,7 @@ const MdxComponents: MDXComponents = {
 
 export default function DetailContent(props: propsType) {
   return (
-    <ContentContainer>
+    <ContentContainer className="detailContent">
       <Index />
       <List />
       <PosContent>
@@ -67,7 +67,6 @@ export default function DetailContent(props: propsType) {
 const ContentContainer = styled("section", {
   base: {
     width: "100%",
-    padding: "70px 390px",
     position: "relative",
   },
 });
@@ -93,9 +92,23 @@ const PosContent = styled("article", {
     },
 
     "& img": {
-      width: "auto !important",
-      height: "auto !important",
       marginTop: "30px",
+      marginBottom: "30px",
+      objectFit: "cover",
+    },
+
+    "& b": {
+      position: "relative",
+      display: "inline-block",
+      backgroundColor: "#6944a6",
+      fontWeight: "600",
+      padding: "0 10px",
+      "&::after": {
+        content: "''",
+        position: "absolute",
+        left: "0",
+        top: "0",
+      },
     },
   },
 });

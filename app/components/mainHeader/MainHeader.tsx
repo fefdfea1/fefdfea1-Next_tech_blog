@@ -18,5 +18,12 @@ const Header = styled("div", {
     backgroundImage: "url('/img/headerbg/bg.jpg')",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
+
+    "& img": {
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      objectFit: "cover",
+    },
   },
 });

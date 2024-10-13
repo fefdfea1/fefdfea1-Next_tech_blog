@@ -2,18 +2,10 @@
 import { styled } from "@/styled-system/jsx";
 import Post from "@/app/components/main/developHelper/site/Post";
 import { useEffect, useState } from "react";
-
-export type developSiteItemType = {
-  thumbnail: string;
-  tag: string;
-  content: string;
-  slug: string;
-  category: string;
-  desc: string;
-};
+import { postType } from "@/app/page";
 
 export default function DevelopHelperSite() {
-  const [develop, setDevelopSite] = useState<developSiteItemType[]>([]);
+  const [develop, setDevelopSite] = useState<postType[]>([]);
   useEffect(() => {
     const dataFetch = async () => {
       const response = await fetch(

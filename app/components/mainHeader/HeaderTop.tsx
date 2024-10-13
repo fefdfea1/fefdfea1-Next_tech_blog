@@ -1,6 +1,7 @@
 import { styled } from "@/styled-system/jsx";
-import { faMagnifyingGlass, faPenNib } from "@fortawesome/free-solid-svg-icons";
+import { faPenNib } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import HeaderSearch from "@/app/components/mainHeader/HeaderSearch";
 import Link from "next/link";
 
 export default function HeaderTop() {
@@ -12,11 +13,7 @@ export default function HeaderTop() {
           <FontAwesomeIcon icon={faPenNib} />
         </SubTitleIconBox>
       </SubTitleContainer>
-      <HeaderUtil>
-        <SearchIconBox>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </SearchIconBox>
-      </HeaderUtil>
+      <HeaderSearch />
     </HeaderTopContainer>
   );
 }
@@ -57,34 +54,5 @@ const SubTitleIconBox = styled("div", {
   base: {
     width: "25px",
     height: "25px",
-  },
-});
-
-const HeaderUtil = styled("div", {
-  base: {
-    width: "50px",
-    height: "50px",
-    position: "absolute",
-    top: "",
-    right: "59px",
-    borderRadius: "50%",
-    cursor: "pointer",
-    backgroundColor: "gray.01",
-    marginRight: "59px",
-  },
-});
-
-const SearchIconBox = styled("div", {
-  base: {
-    width: "25px",
-    height: "25px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%,-50%)",
-    color: "#fff",
   },
 });

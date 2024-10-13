@@ -4,22 +4,40 @@ import { SwiperSlide } from "swiper/react";
 import Link from "next/link";
 import "swiper/css";
 import "swiper/css/scrollbar";
-import { developSiteItemType } from "@/app/components/main/developHelper/site/DevelopHelperSite";
+import { postType } from "@/app/page";
 import { Swiper } from "swiper/react";
 import { nanoid } from "nanoid";
 import { Scrollbar } from "swiper/modules";
+import { useMediaQuery } from "react-responsive";
 type propsType = {
-  developSiteItem: developSiteItemType[];
+  developSiteItem: postType[];
 };
 
 export default function Post(props: propsType) {
+  const deskTop = useMediaQuery({
+    query: "(min-width:1024px)",
+  });
+  const tablet = useMediaQuery({
+    query: "(min-width:764px)",
+  });
+  const mobile = useMediaQuery({
+    query: "(max-width:763px)",
+  });
+
+  const defaultSize = 3;
+  const currentSize = returnCurrentSize(defaultSize, deskTop, tablet, mobile);
   return (
-    <Swiper spaceBetween={97} slidesPerView={3} modules={[Scrollbar]} scrollbar>
+    <Swiper
+      spaceBetween={47}
+      slidesPerView={currentSize}
+      modules={[Scrollbar]}
+      scrollbar
+    >
       {props.developSiteItem.map((item) => {
         return (
           <SwiperSlide key={nanoid()}>
-            <SitePost>
-              <Link href={`${item.category}/${item.slug}`}>
+            <SitePost center={mobile ? "mobile" : undefined}>
+              <Link href={`${item.url}`}>
                 <ImgBox>
                   <img
                     src={
@@ -43,6 +61,18 @@ export default function Post(props: propsType) {
   );
 }
 
+function returnCurrentSize(
+  currentSize: number,
+  deskTop: boolean,
+  tablet: boolean,
+  mobile: boolean
+) {
+  if (deskTop) currentSize = 3;
+  else if (tablet) currentSize = 2;
+  else if (mobile) currentSize = 1;
+  return currentSize;
+}
+
 const SitePost = styled("article", {
   base: {
     width: "100%",
@@ -51,6 +81,13 @@ const SitePost = styled("article", {
     position: "relative",
     borderRadius: "30px",
     border: "1px solid white",
+  },
+  variants: {
+    center: {
+      mobile: {
+        margin: "0 auto",
+      },
+    },
   },
 });
 

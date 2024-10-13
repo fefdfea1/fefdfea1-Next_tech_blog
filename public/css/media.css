@@ -1,0 +1,109 @@
+@media screen and (max-width: 767px) {
+  .lastPost {
+    padding: 0 40px;
+  }
+
+  .developSite {
+    padding: 67px 40px;
+  }
+
+  .extension {
+    width: 100%;
+  }
+
+  .postContainer {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .BigPost {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .sidePost {
+    width: 100%;
+    max-width: none;
+    row-gap: 30px;
+  }
+  .detailContent {
+    padding: 70px 80px;
+  }
+
+  .Giscus {
+    padding: 0px 80px;
+  }
+
+  .listContainer {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .lastPost {
+    padding: 0 40px;
+  }
+
+  .developSite {
+    padding: 67px 40px;
+  }
+  .extension {
+    width: 49%;
+  }
+
+  .detailContent {
+    padding: 70px 160px;
+  }
+
+  .Giscus {
+    padding: 0 160px;
+  }
+
+  .listContainer {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .lastPost {
+    padding: 0 100px;
+  }
+
+  .developSite {
+    padding: 67px 100px;
+  }
+
+  .extension {
+    width: 32%;
+  }
+
+  .detailContent {
+    padding: 70px 245px;
+  }
+
+  .Giscus {
+    padding: 0 245px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .lastPost {
+    padding: 0 210px;
+  }
+
+  .developSite {
+    padding: 67px 210px;
+  }
+
+  .detailContent {
+    padding: 70px 390px;
+  }
+
+  .Giscus {
+    padding: 0 390px;
+  }
+
+  .listContainer {
+    display: block;
+  }
+}

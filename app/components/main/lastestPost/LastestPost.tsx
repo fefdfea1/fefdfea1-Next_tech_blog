@@ -3,14 +3,12 @@ import { getPostList } from "@/app/fetch/getAllMdx/getPostList";
 import BigPost from "@/app/components/main/lastestPost/BigPost";
 import SidePost from "@/app/components/main/lastestPost/SidePost";
 
-
 export default async function LastestPost() {
   const post = await getPostList();
-
   return (
-    <LastestContainer>
+    <LastestContainer className="lastPost">
       <LastestTitle>최신 글 ✨</LastestTitle>
-      <PostContainer>
+      <PostContainer className="postContainer">
         <BigPost postType={post[0]} />
         <SidePost postType={post} />
       </PostContainer>
@@ -18,10 +16,11 @@ export default async function LastestPost() {
   );
 }
 
-const LastestContainer = styled("div", {
+const LastestContainer = styled("section", {
   base: {
     height: "100%",
     padding: "0 210px",
+    marginBottom: "80px",
   },
 });
 
@@ -38,7 +37,7 @@ const LastestTitle = styled("p", {
 const PostContainer = styled("section", {
   base: {
     width: "100%",
-    columnGap: "148px",
+    columnGap: "10%",
     display: "flex",
   },
 });

@@ -40,11 +40,11 @@ const MainContainer = styled("div", {
 
 const Circle = styled("div", {
   base: {
-    width: "126px",
-    height: "126px",
+    width: "8vw",
+    height: "8vw",
     position: "absolute",
     left: "50%",
-    top: "203%",
+    top: "21vw",
     transform: "translateX(-50%)",
     border: "1px solid #fff",
     borderRadius: "50%",
@@ -53,11 +53,11 @@ const Circle = styled("div", {
 
 const ArrowIconBox = styled("div", {
   base: {
-    width: "50px",
-    height: "50px",
+    width: "4vw",
+    height: "4vw",
     position: "absolute",
     left: "50%",
-    top: "0",
+    top: "1vw",
     transform: "translate(-50%,-50%)",
 
     "& svg": {

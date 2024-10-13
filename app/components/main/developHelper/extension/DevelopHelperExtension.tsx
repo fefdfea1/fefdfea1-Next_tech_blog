@@ -35,8 +35,8 @@ const ExtensionPostContainer = styled("div", {
     width: "100%",
     display: "flex",
     flexWrap: "wrap",
-    columnGap: "44px",
-    rowGap: "96px",
+    columnGap: "2%",
+    rowGap: "50px",
   },
 });
 

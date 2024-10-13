@@ -49,7 +49,7 @@ const RefTitle = styled("p", {
     color: "#fff",
     fontSize: "25px",
     fontWeight: "700",
-    padding: "0px 25px 10px 40px",
+    padding: "0px 25px 10px 13px",
   },
 });
 

@@ -9,7 +9,7 @@ type propsType = {
 
 export default function BigPost(props: propsType) {
   return (
-    <LastPost>
+    <LastPost className="BigPost">
       <Link href={`${props.postType.url}`}>
         <Thumbnail>
           <img src="/img/noThumbnail/noImages.png" alt="썸네일 없음" />
@@ -41,6 +41,12 @@ const LastPost = styled("article", {
     borderRadius: "30px",
     overflow: "hidden",
     backgroundColor: "#fff",
+
+    "& a": {
+      width: "100%",
+      height: "100%",
+      display: "block",
+    },
   },
 });
 

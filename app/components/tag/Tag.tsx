@@ -8,7 +8,7 @@ type propsType = {
 
 export default function Tag(props: propsType) {
   return (
-    <SideTag {...(props.usePost && { usePost: props.usePost })}>
+    <SideTag {...(props.usePost && { usePost: props.usePost })} className="tag">
       {props.tag}
     </SideTag>
   );
@@ -16,12 +16,11 @@ export default function Tag(props: propsType) {
 
 const SideTag = styled("div", {
   base: {
-    display: "flex",
+    display: "inline-flex",
     justifyContent: "center",
     alignItems: "center",
-    width: "100%",
-    maxWidth: "102px",
     height: "45px",
+    padding: "0 20px",
     borderRadius: "30px",
     backgroundColor: "primary.01",
     textStyle: "tag",

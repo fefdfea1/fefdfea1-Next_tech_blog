@@ -31,9 +31,6 @@ export default function HeaderSearch() {
     };
   }, [searchBoxRef]);
 
-  useEffect(() => {
-    console.log(searchBoxState);
-  }, [searchBoxState]);
   return (
     <HeaderUtil ref={searchBoxRef} state={searchBoxState}>
       <SearchIconBox>

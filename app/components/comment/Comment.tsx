@@ -35,6 +35,7 @@ const CommentIcon = styled("div", {
     width: "30px",
     height: "30px",
     display: "flex",
+    alignItems: "center",
     marginRight: "13px",
   },
 });

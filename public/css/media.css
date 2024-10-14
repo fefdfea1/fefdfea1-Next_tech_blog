@@ -37,6 +37,18 @@
   .listContainer {
     display: none;
   }
+
+  .BigPost {
+    min-height: 304px;
+  }
+
+  .BigPostImg {
+    height: 213px;
+  }
+
+  .bigPostText {
+    -webkit-line-clamp: 2;
+  }
 }
 
 @media screen and (min-width: 768px) {

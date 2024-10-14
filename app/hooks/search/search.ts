@@ -24,7 +24,6 @@ export function useSearchHook(
         }
       );
       const data = (await response.json()) as responseType;
-      console.log(data);
       setSearchList(data.postArray);
     };
     Fetch();

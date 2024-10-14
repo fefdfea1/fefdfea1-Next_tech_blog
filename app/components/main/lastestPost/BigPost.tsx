@@ -11,7 +11,7 @@ export default function BigPost(props: propsType) {
   return (
     <LastPost className="BigPost">
       <Link href={`${props.postType.url}`}>
-        <Thumbnail>
+        <Thumbnail className="BigPostImg">
           <img src="/img/noThumbnail/noImages.png" alt="썸네일 없음" />
         </Thumbnail>
         <PostDescContainer>

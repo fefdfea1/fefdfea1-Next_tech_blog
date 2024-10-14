@@ -9,7 +9,7 @@ export default function DevelopHelperSite() {
   useEffect(() => {
     const dataFetch = async () => {
       const response = await fetch(
-        `${process.env.base_url}/api/developSitePost`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/developSitePost`,
         {
           method: "get",
         }

@@ -4,7 +4,6 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 type responseType = {
   postArray: postType[];
 };
-
 export function useSearchHook(
   searchValue: string,
   setSearchList: Dispatch<SetStateAction<postType[]>>
@@ -15,12 +14,15 @@ export function useSearchHook(
         setSearchList([]);
         return;
       }
-      const response = await fetch(`${process.env.base_url}/api/search`, {
-        method: "post",
-        body: JSON.stringify({
-          searchValue: searchValue,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/search`,
+        {
+          method: "post",
+          body: JSON.stringify({
+            searchValue: searchValue,
+          }),
+        }
+      );
       const data = (await response.json()) as responseType;
       console.log(data);
       setSearchList(data.postArray);

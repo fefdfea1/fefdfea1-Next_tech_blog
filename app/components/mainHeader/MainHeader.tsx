@@ -15,7 +15,7 @@ const Header = styled("div", {
     width: "100%",
     height: "100vh",
     position: "relative",
-    backgroundImage: "url('/img/headerbg/bg.jpg')",
+    backgroundImage: "url('/img/headerBg/bg.jpg')",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
 

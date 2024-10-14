@@ -6,6 +6,7 @@ export async function getPostUrl(postPath: string, basePath: string) {
 
   // category1, title1
   let [category, slug] = filePath.split("\\");
+  console.log(filePath);
 
   // /blog/category1/title1
   const url = `detail/${category}/${slug}`;

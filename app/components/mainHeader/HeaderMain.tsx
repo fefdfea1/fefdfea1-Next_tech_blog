@@ -63,6 +63,7 @@ const ArrowIconBox = styled("div", {
     "& svg": {
       width: "100%",
       height: "100%",
+      animation: "1.4s bounce infinite",
     },
   },
 });

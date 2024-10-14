@@ -91,6 +91,22 @@ export default defineConfig({
           },
         },
       },
+      keyframes: {
+        bounce: {
+          "0%": {
+            top: "1vw",
+          },
+          "50%": {
+            top: "0.7vw",
+          },
+          "55%": {
+            top: "0.65px",
+          },
+          "100%": {
+            top: "1.5vw",
+          },
+        },
+      },
     },
   },
 

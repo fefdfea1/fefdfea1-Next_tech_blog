@@ -2,25 +2,47 @@
 import { styled } from "@/styled-system/jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { useRef, useState } from "react";
+import {
+  Dispatch,
+  RefObject,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { postType } from "@/app/page";
 import Link from "next/link";
 import { useSearchHook } from "@/app/hooks/search/search";
+import { nanoid } from "nanoid";
 
 export default function HeaderSearch() {
-  const searchBoxRef = useRef(null);
+  const searchBoxRef = useRef<HTMLDivElement>(null);
   const [searchValue, serSearchValue] = useState("");
   const [searchList, setSearchList] = useState<postType[]>([]);
+  const [searchBoxState, setBoxState] = useState<"close" | "active">("close");
+  const clickFn = (event: MouseEvent) =>
+    clickHandler(event, searchBoxRef, setBoxState);
   useSearchHook(searchValue, setSearchList);
+  useEffect(() => {
+    document.addEventListener("click", clickFn);
+
+    return () => {
+      document.removeEventListener("click", clickFn);
+    };
+  }, [searchBoxRef]);
+
+  useEffect(() => {
+    console.log(searchBoxState);
+  }, [searchBoxState]);
   return (
-    <HeaderUtil className="active" ref={searchBoxRef}>
+    <HeaderUtil ref={searchBoxRef} state={searchBoxState}>
       <SearchIconBox>
         <FontAwesomeIcon icon={faMagnifyingGlass} />
       </SearchIconBox>
       <SearchBox onChange={(event) => serSearchValue(event.target.value)} />
       <SearchResultListContainer>
         {searchList.map((item) => (
-          <SearchList>
+          <SearchList key={nanoid()}>
             <Link href={`${item.url}`}>
               <h4>{item.title}</h4>
             </Link>
@@ -31,6 +53,19 @@ export default function HeaderSearch() {
   );
 }
 
+function clickHandler(
+  event: MouseEvent,
+  searchBox: RefObject<HTMLDivElement>,
+  setBoxState: Dispatch<SetStateAction<"close" | "active">>
+) {
+  const target = event.target as HTMLElement;
+  if (searchBox.current && searchBox.current.contains(target)) {
+    setBoxState("active");
+  } else {
+    setBoxState("close");
+  }
+}
+
 const HeaderUtil = styled("div", {
   base: {
     width: "40px",
@@ -39,19 +74,35 @@ const HeaderUtil = styled("div", {
     alignItems: "center",
     position: "absolute",
     right: "59px",
-    cursor: "pointer",
     backgroundColor: "#fff",
     marginRight: "59px",
     padding: "7px 10px",
     transition: "0.3s width",
     borderRadius: "10px",
+  },
 
-    "&.active": {
-      width: "200px",
-    },
-    "&.active input": {
-      width: "80%",
-      display: "block",
+  variants: {
+    state: {
+      active: {
+        width: "200px",
+        "& input": {
+          width: "80%",
+          display: "block",
+        },
+
+        "& ul": {
+          display: "block",
+        },
+      },
+      close: {
+        "& input": {
+          width: "0%",
+          display: "block",
+        },
+        "& ul": {
+          display: "none",
+        },
+      },
     },
   },
 });
@@ -66,6 +117,7 @@ const SearchResultListContainer = styled("ul", {
     left: "0",
     backgroundColor: "#fff",
     borderRadius: "10px",
+    cursor: "pointer",
   },
 });
 
@@ -97,7 +149,11 @@ const SearchIconBox = styled("div", {
     justifyContent: "center",
     alignItems: "center",
     color: "black",
-    pointerEvents: "none",
+    cursor: "pointer",
+
+    "& svg": {
+      pointerEvents: "none",
+    },
   },
 });
 

@@ -45,7 +45,7 @@ const SubTitleContainer = styled("div", {
     "& > a": {
       display: "inline-block",
       textStyle: "xl",
-      marginRight: "36px",
+      marginRight: "20px",
     },
   },
 });

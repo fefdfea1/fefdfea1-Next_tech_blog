@@ -110,5 +110,18 @@ const PosContent = styled("article", {
         top: "0",
       },
     },
+
+    "& code": {
+      padding: "10px",
+    },
+
+    "& blockquote": {
+      display: "inline-block",
+      width: "100%",
+      height: "auto",
+      backgroundColor: "rgba(31, 41, 55,1)",
+      padding: "10px",
+      borderRadius: "5px",
+    },
   },
 });

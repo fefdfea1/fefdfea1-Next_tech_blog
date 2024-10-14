@@ -15,7 +15,7 @@ export function useSearchHook(
         setSearchList([]);
         return;
       }
-      const response = await fetch("http://localhost:3000/api/search", {
+      const response = await fetch(`${process.env.base_url}/api/search`, {
         method: "post",
         body: JSON.stringify({
           searchValue: searchValue,

@@ -9,7 +9,7 @@ export default function DevelopHelperSite() {
   useEffect(() => {
     const dataFetch = async () => {
       const response = await fetch(
-        "http://localhost:3000/api/developSitePost",
+        `${process.env.base_url}/api/developSitePost`,
         {
           method: "get",
         }

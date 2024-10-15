@@ -28,7 +28,7 @@ const BackgroundImg = styled("figure", {
   base: {
     width: "100%",
     height: "533px",
-    backgroundImage: "url('/img/headerbg/bg.jpg')",
+    backgroundImage: "url('/img/headerBg/bg.jpg')",
     backgroundSize: "cover",
     color: "#fff",
     display: "flex",

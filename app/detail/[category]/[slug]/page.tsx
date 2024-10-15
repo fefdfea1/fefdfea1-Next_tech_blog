@@ -15,7 +15,11 @@ type propsType = {
 export default function page(props: propsType) {
   const BASE_PATH = "app/post";
   const POSTS_PATH = path.join(process.cwd(), BASE_PATH);
-  const postPath = getPostPaths(POSTS_PATH, props.params.category);
+  const postPath = getPostPaths(
+    POSTS_PATH,
+    props.params.category,
+    props.params.slug
+  );
   const detail = getPostDetail(postPath[0]);
   const reference = detail.reference ? detail.reference.split(",") : [];
   return (

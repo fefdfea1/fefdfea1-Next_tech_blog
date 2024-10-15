@@ -1,12 +1,12 @@
-import { sync } from "glob";
-import path from "path";
+import { globSync } from "glob";
 
-export const getPostPaths = (category?: string, slug?: string) => {
-  const BASE_PATH = "app/post";
-  const POSTS_PATH = path.join(process.cwd(), BASE_PATH);
+export const getPostPaths = (
+  POSTS_PATH: string,
+  category?: string,
+  slug?: string
+) => {
   const folder = category || "**";
   const fileName = slug || "**";
-  const paths: string[] = sync(`${POSTS_PATH}/${folder}/**/${fileName}.mdx`);
-  console.log(POSTS_PATH);
-  return paths;
+  let postPaths = globSync(`${POSTS_PATH}/${folder}/**/${fileName}.mdx`);
+  return postPaths;
 };

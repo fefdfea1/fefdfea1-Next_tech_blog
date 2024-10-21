@@ -4,6 +4,7 @@ import Tag from "@/app/components/tag/Tag";
 import { nanoid } from "nanoid";
 import { extractContent } from "@/app/page";
 import Link from "next/link";
+import ReadingTime from "@/app/components/readingTIme/ReadingTime";
 
 type propsType = {
   postType: postType[];
@@ -23,6 +24,7 @@ export default function SidePost(props: propsType) {
                 <SidePostDesc className="text2Line">{desc}</SidePostDesc>
                 <SidePostItemBottom>
                   <Tag tag={item.tag} />
+                  <ReadingTime readingTime={item.readingMinutes} />
                 </SidePostItemBottom>
               </SidePostLeft>
               <SidePostRight>

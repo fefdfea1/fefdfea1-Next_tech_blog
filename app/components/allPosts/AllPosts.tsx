@@ -4,6 +4,7 @@ import { styled } from "@/styled-system/jsx";
 import { nanoid } from "nanoid";
 import Image from "next/image";
 import Link from "next/link";
+import ReadingTime from "@/app/components/readingTIme/ReadingTime";
 
 export default async function AllPosts() {
   const postList = await getPostList();
@@ -19,11 +20,14 @@ export default async function AllPosts() {
                 fill
               />
             </ImageBox>
-            <DescBox>
-              <Tag tag={post.tag} />
-              <Title>{post.title}</Title>
-              <PostDesc className="bigPostText">{post.desc}</PostDesc>
-            </DescBox>
+            <DescAndTimeBox>
+              <DescBox>
+                <Tag tag={post.tag} />
+                <Title>{post.title}</Title>
+                <PostDesc className="postsText">{post.desc}</PostDesc>
+              </DescBox>
+              <ReadingTime readingTime={0} mt={"mt10"} />
+            </DescAndTimeBox>
           </Link>
         </PostContainer>
       ))}
@@ -35,13 +39,11 @@ const PostsContainer = styled("section", {
   base: {
     width: "100%",
     display: "grid",
-    gridTemplateColumns: "repeat(3,minmax(300px,573px))",
-    gridTemplateRows: "repeat(3,minmax(547px,547px))",
     justifyItems: "center",
     alignItems: "center",
     gridGap: "50px",
-    marginTop: "200px",
-    padding: "0 100px",
+    marginTop: "400px",
+    padding: "0 250px 100px 250px",
   },
 });
 
@@ -55,6 +57,11 @@ const PostContainer = styled("article", {
     backgroundColor: "#fff",
     borderRadius: "30px",
     overflow: "hidden",
+
+    "& a": {
+      width: "100%",
+      height: "100%",
+    },
   },
 });
 
@@ -74,16 +81,22 @@ const Title = styled("p", {
   },
 });
 
+const DescAndTimeBox = styled("div", {
+  base: {
+    padding: "30px 40px",
+  },
+});
+
 const DescBox = styled("div", {
   base: {
     width: "100%",
     backgroundColor: "#FFFFFF",
-    padding: "30px 40px",
   },
 });
 
 const PostDesc = styled("p", {
   base: {
+    minHeight: "72px",
     color: "#999999",
     overflow: "hidden",
     marginTop: "16px",

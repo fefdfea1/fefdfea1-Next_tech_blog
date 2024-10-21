@@ -2,6 +2,7 @@ import { styled } from "@/styled-system/jsx";
 import Tag from "@/app/components/tag/Tag";
 import { postType } from "@/app/page";
 import Link from "next/link";
+import ReadingTime from "@/app/components/readingTIme/ReadingTime";
 type propsType = {
   postType: postType;
 };
@@ -21,11 +22,7 @@ export default function BigPost(props: propsType) {
           <BigPostDesc className="bigPostText">
             {props.postType ? props.postType.desc : "찾을 수 없음"}
           </BigPostDesc>
-          {/* <CommentBox>
-            <Comment
-              commentCount={props.postType ? props.postType.commentCount : "0"}
-            />
-          </CommentBox> */}
+          <ReadingTime readingTime={0} mt={"mt20"} />
         </PostDescContainer>
       </Link>
     </LastPost>
@@ -59,6 +56,7 @@ const Thumbnail = styled("figure", {
 
 const PostDescContainer = styled("div", {
   base: {
+    position: "relative",
     padding: "30px 39px",
   },
 });

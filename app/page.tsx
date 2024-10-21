@@ -22,6 +22,7 @@ export type postType = {
   url: string;
   date: string;
   reference: string;
+  readingMinutes: number;
 };
 
 export type indexType = {

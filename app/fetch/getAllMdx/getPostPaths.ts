@@ -12,6 +12,5 @@ export const getPostPaths = (
   let postPaths = globSync(
     `${POSTS_PATH}/${categoryName}/${folderName}/${fileName}.mdx`
   );
-  console.log(postPaths);
   return postPaths;
 };

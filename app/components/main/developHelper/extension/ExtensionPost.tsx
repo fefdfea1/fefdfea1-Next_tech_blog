@@ -1,6 +1,5 @@
 import { styled } from "@/styled-system/jsx";
 import Tag from "@/app/components/tag/Tag";
-import Comment from "@/app/components/comment/Comment";
 import { postType } from "@/app/page";
 import Link from "next/link";
 
@@ -21,7 +20,6 @@ export default function ExtensionPost(props: propsType) {
         <ExtensionDesc>
           <Tag tag={`${props.item.tag}`} usePost="site" />
           <PostDesc>{props.item.desc}</PostDesc>
-          <Comment commentCount={"15"} />
         </ExtensionDesc>
       </Link>
     </ExtensionPostContainer>

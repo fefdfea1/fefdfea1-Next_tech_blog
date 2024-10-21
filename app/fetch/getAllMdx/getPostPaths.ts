@@ -3,10 +3,15 @@ import { globSync } from "glob";
 export const getPostPaths = (
   POSTS_PATH: string,
   category?: string,
-  slug?: string
+  slug?: string,
+  folder?: string
 ) => {
-  const folder = category || "**";
+  const categoryName = category || "**";
   const fileName = slug || "**";
-  let postPaths = globSync(`${POSTS_PATH}/${folder}/**/${fileName}.mdx`);
+  const folderName = folder || "**";
+  let postPaths = globSync(
+    `${POSTS_PATH}/${categoryName}/${folderName}/${fileName}.mdx`
+  );
+  console.log(postPaths);
   return postPaths;
 };

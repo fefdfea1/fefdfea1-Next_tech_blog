@@ -6,10 +6,10 @@ export async function getPostUrl(postPath: string, POSTS_PATH: string) {
   relativePath = relativePath.replace(/\.mdx$/, "");
 
   // category1, title1
-  let [category, slug] = relativePath.split("/");
+  let [category, folder, slug] = relativePath.split("/");
 
   //  /blog/category1/title1
-  const url = `detail/${category}/${slug}`;
+  const url = `detail/${category}/${folder}/${slug}`;
 
   return { url, category, slug };
 }

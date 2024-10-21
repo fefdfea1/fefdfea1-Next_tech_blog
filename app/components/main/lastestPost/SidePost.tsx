@@ -1,7 +1,6 @@
 import { styled } from "@/styled-system/jsx";
 import { postType } from "@/app/page";
 import Tag from "@/app/components/tag/Tag";
-import Comment from "@/app/components/comment/Comment";
 import { nanoid } from "nanoid";
 import { extractContent } from "@/app/page";
 import Link from "next/link";
@@ -24,7 +23,6 @@ export default function SidePost(props: propsType) {
                 <SidePostDesc className="text2Line">{desc}</SidePostDesc>
                 <SidePostItemBottom>
                   <Tag tag={item.tag} />
-                  {/* <Comment commentCount={item.commentCount} /> */}
                 </SidePostItemBottom>
               </SidePostLeft>
               <SidePostRight>

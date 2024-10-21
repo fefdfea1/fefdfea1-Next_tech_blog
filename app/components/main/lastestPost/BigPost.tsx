@@ -1,7 +1,6 @@
 import { styled } from "@/styled-system/jsx";
 import Tag from "@/app/components/tag/Tag";
 import { postType } from "@/app/page";
-import Comment from "@/app/components/comment/Comment";
 import Link from "next/link";
 type propsType = {
   postType: postType;

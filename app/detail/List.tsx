@@ -7,6 +7,7 @@ import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { useIndex } from "@/app/hooks/indexSet";
 import { indexType } from "@/app/page";
 import { nanoid } from "nanoid";
+import { ScrollHandler } from "@/app/components/mainHeader/HeaderTop";
 
 export default function List() {
   const [TitleArray, setTitle] = useState<indexType[]>([]);
@@ -51,6 +52,8 @@ function clickHandler(ListContainerRef: MutableRefObject<null>) {
 function listScrollPosition() {
   const scrollTop = window.scrollY;
   const listContainer = document.querySelector(".listContainer") as HTMLElement;
+  ScrollHandler();
+
   if (scrollTop >= 400) {
     listContainer.style.opacity = "1";
   } else {

@@ -49,6 +49,10 @@
   .bigPostText {
     -webkit-line-clamp: 2;
   }
+  .allPostContainer {
+    grid-template-columns: repeat(1, minmax(300px, 573px));
+    padding: 0 50px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -73,6 +77,9 @@
 
   .listContainer {
     display: none;
+  }
+  .allPostContainer {
+    grid-template-columns: repeat(2, minmax(200px, 573px));
   }
 }
 
@@ -117,5 +124,9 @@
 
   .listContainer {
     display: block;
+  }
+
+  .allPostContainer {
+    grid-template-columns: repeat(3, minmax(300px, 573px));
   }
 }

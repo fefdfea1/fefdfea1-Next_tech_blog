@@ -22,7 +22,7 @@ const MainContainer = styled("div", {
     left: "50%",
     transform: "translate(-50%)",
     color: "#fff",
-    fontSize: "clamp(70px,7vw,100px)",
+    fontSize: "clamp(60px,7vw,100px)",
     textWrap: "nowrap",
 
     "&::after": {
@@ -48,7 +48,7 @@ const Circle = styled("div", {
     minHeight: "100px",
     position: "absolute",
     left: "50%",
-    top: "clamp(232%,32vw,232%)",
+    top: "clamp(241%,32vw,232%)",
     transform: "translateX(-50%)",
     border: "1px solid #fff",
     borderRadius: "50%",

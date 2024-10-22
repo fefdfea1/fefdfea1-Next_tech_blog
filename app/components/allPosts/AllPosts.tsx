@@ -11,16 +11,16 @@ export default async function AllPosts() {
   return (
     <PostsContainer className="allPostContainer">
       {postList.map((post) => (
-        <PostContainer key={nanoid()}>
+        <PostContainer key={nanoid()} className="">
           <Link href={post.url}>
-            <ImageBox>
+            <ImageBox className="postsImage">
               <Image
                 src={`${post.thumbnail ? post.thumbnail : "/img/noThumbnail/noImages.png"}`}
                 alt="썸네일"
                 fill
               />
             </ImageBox>
-            <DescAndTimeBox>
+            <DescAndTimeBox className="DescAndTimeBox">
               <DescBox>
                 <Tag tag={post.tag} />
                 <Title>{post.title}</Title>
@@ -43,7 +43,6 @@ const PostsContainer = styled("section", {
     alignItems: "center",
     gridGap: "50px",
     marginTop: "400px",
-    padding: "0 250px 100px 250px",
   },
 });
 

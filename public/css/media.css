@@ -50,12 +50,25 @@
     -webkit-line-clamp: 2;
   }
   .allPostContainer {
-    grid-template-columns: repeat(1, minmax(300px, 573px));
+    grid-template-columns: repeat(1, minmax(300px, 406px));
     padding: 0 50px;
   }
 
   .headerPost {
     right: 30px;
+  }
+
+  .postsImage {
+    height: 216px;
+  }
+
+  .postsText {
+    -webkit-line-clamp: 2;
+    min-height: auto;
+  }
+
+  .DescAndTimeBox {
+    padding: 20px 40px;
   }
 }
 
@@ -85,6 +98,10 @@
   .allPostContainer {
     grid-template-columns: repeat(2, minmax(200px, 573px));
   }
+
+  .allPostContainer {
+    padding: 0 50px 100px 50px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -106,6 +123,10 @@
 
   .Giscus {
     padding: 0 245px;
+  }
+
+  .allPostContainer {
+    padding: 0 100px 100px 100px;
   }
 }
 
@@ -132,5 +153,9 @@
 
   .allPostContainer {
     grid-template-columns: repeat(3, minmax(300px, 573px));
+  }
+
+  .allPostContainer {
+    padding: 0 250px 100px 250px;
   }
 }

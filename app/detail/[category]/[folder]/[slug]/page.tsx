@@ -20,7 +20,7 @@ export default function page(props: propsType) {
     props.params.category,
     props.params.slug
   );
-  const detail = getPostDetail(postPath[0]);
+  const detail = getPostDetail(BASE_PATH, postPath[0]);
   const reference = detail.reference ? detail.reference.split(",") : [];
   return (
     <>

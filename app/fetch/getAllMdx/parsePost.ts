@@ -3,10 +3,10 @@ import { getPostDetail } from "@/app/fetch/getAllMdx/detailPost";
 import { extractContent } from "@/app/page";
 import { calcReadingTime } from "@/app/fetch/readingTime/mdxReadingTime";
 
-export async function parsePost(postPath: string, POSTS_PATH: string) {
+export async function parsePost(postPath: string, defaultPostPath: string) {
   const replacePath = postPath.replace(/\\/g, "/");
-  const postDetail = await getPostUrl(replacePath, POSTS_PATH);
-  const postAbstract = getPostDetail(replacePath);
+  const postDetail = await getPostUrl(defaultPostPath, replacePath);
+  const postAbstract = getPostDetail(defaultPostPath, replacePath);
   const desc = extractContent(postAbstract.content);
   const readingMinutes = calcReadingTime(postAbstract.content);
   return { ...postAbstract, ...postDetail, desc, readingMinutes };

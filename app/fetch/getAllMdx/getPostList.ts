@@ -4,10 +4,10 @@ import path from "path";
 
 export const getPostList = async (category?: string) => {
   const BASE_PATH = "app/post";
-  const POSTS_PATH = path.join(process.cwd(), BASE_PATH);
-  const paths: string[] = getPostPaths(POSTS_PATH, category);
+  const defaultPostPath = path.join(process.cwd(), BASE_PATH);
+  const paths: string[] = getPostPaths(defaultPostPath, category);
   const posts = await Promise.all(
-    paths.map((postPath) => parsePost(postPath, POSTS_PATH))
+    paths.map((postPath) => parsePost(postPath, defaultPostPath))
   );
   return posts;
 };

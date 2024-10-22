@@ -30,8 +30,8 @@ export default function SidePost(props: propsType) {
               <SidePostRight>
                 <img
                   src={
-                    item.thumbnail
-                      ? item.thumbnail
+                    item.thumbnailUrl
+                      ? item.thumbnailUrl
                       : "/img/noThumbnail/noImages.png"
                   }
                   alt="썸네일"

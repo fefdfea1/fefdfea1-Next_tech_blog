@@ -1,7 +1,8 @@
 import path from "path";
 
-export async function getPostUrl(postPath: string, POSTS_PATH: string) {
-  let relativePath = path.relative(POSTS_PATH, postPath);
+export async function getPostUrl(defaultPostPath: string, replacePath: string) {
+  let relativePath = path.relative(defaultPostPath, replacePath);
+
   relativePath = relativePath.replace(new RegExp("\\" + path.sep, "g"), "/");
   relativePath = relativePath.replace(/\.mdx$/, "");
 

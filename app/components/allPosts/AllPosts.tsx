@@ -15,7 +15,7 @@ export default async function AllPosts() {
           <Link href={post.url}>
             <ImageBox className="postsImage">
               <Image
-                src={`${post.thumbnail ? post.thumbnail : "/img/noThumbnail/noImages.png"}`}
+                src={`${post.thumbnailUrl ? post.thumbnailUrl : "/img/noThumbnail/noImages.png"}`}
                 alt="썸네일"
                 fill
               />

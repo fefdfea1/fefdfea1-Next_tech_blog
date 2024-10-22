@@ -3,7 +3,6 @@ import Tag from "@/app/components/tag/Tag";
 import { postType } from "@/app/page";
 import Link from "next/link";
 import ReadingTime from "@/app/components/readingTIme/ReadingTime";
-
 type propsType = {
   item: postType;
 };
@@ -14,7 +13,7 @@ export default function ExtensionPost(props: propsType) {
       <Link href={`${props.item.url}`}>
         <Thumbnail>
           <img
-            src={`${props.item.thumbnail ? props.item.thumbnail : "/img/noThumbnail/noImages.png"}`}
+            src={`${props.item.thumbnailUrl ? "thumbnailData" : "/img/noThumbnail/noImages.png"}`}
             alt="익스텐션 썸네일"
           />
         </Thumbnail>

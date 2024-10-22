@@ -13,7 +13,7 @@ export default function BigPost(props: propsType) {
       <Link href={`${props.postType.url}`}>
         <Thumbnail className="BigPostImg">
           <img
-            src={`${props.postType.thumbnail ? props.postType.thumbnail : "/img/noThumbnail/noImages.png"}`}
+            src={`${props.postType.thumbnailUrl ? props.postType.thumbnailUrl : "/img/noThumbnail/noImages.png"}`}
             alt="썸네일 없음"
           />
         </Thumbnail>

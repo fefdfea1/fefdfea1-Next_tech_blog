@@ -11,7 +11,7 @@ export default async function AllPosts() {
   return (
     <PostsContainer className="allPostContainer">
       {postList.map((post) => (
-        <PostContainer key={nanoid()} className="">
+        <PostContainer key={nanoid()} className="postContainer">
           <Link href={post.url}>
             <ImageBox className="postsImage">
               <Image

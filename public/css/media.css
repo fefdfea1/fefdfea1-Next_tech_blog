@@ -50,7 +50,7 @@
     -webkit-line-clamp: 2;
   }
   .allPostContainer {
-    grid-template-columns: repeat(1, minmax(300px, 406px));
+    grid-template-columns: repeat(1, minmax(300px, 1fr));
     padding: 0 50px;
   }
 
@@ -69,6 +69,10 @@
 
   .DescAndTimeBox {
     padding: 20px 40px;
+  }
+
+  .postContainer {
+    max-width: 409px;
   }
 }
 

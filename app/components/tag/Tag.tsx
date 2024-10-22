@@ -19,7 +19,7 @@ const SideTag = styled("div", {
     display: "inline-flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "45px",
+    height: "35px",
     padding: "0 20px",
     borderRadius: "30px",
     backgroundColor: "primary.01",

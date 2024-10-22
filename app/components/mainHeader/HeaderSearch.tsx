@@ -112,7 +112,6 @@ const SearchResultListContainer = styled("ul", {
     left: "0",
     backgroundColor: "#fff",
     borderRadius: "10px",
-    cursor: "pointer",
   },
 });
 
@@ -128,6 +127,7 @@ const SearchList = styled("li", {
       padding: "0px 10px",
       display: "flex",
       alignItems: "center",
+      color: "black",
 
       "&:hover": {
         backgroundColor: "#f8f9fa",

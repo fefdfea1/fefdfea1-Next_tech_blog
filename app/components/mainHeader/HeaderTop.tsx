@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import HeaderSearch from "@/app/components/mainHeader/HeaderSearch";
 import Link from "next/link";
 import { useEffect } from "react";
+import Hamberger from "@/app/components/hamberger/Hamberger";
+import { useMediaQuery } from "react-responsive";
 
 export default function HeaderTop() {
   useEffect(() => {
@@ -15,6 +17,11 @@ export default function HeaderTop() {
       };
     }
   }, []);
+
+  const deskTop = useMediaQuery({
+    query: "(min-width:1024px)",
+  });
+
   return (
     <HeaderTopContainer className="header">
       <SubTitleContainer>
@@ -23,8 +30,8 @@ export default function HeaderTop() {
           <FontAwesomeIcon icon={faPenNib} />
         </SubTitleIconBox>
       </SubTitleContainer>
-      <HeaderSearchBox>
-        <HeaderSearch />
+      <HeaderSearchBox className="headerPost">
+        {deskTop && <HeaderSearch />}
         <Link href="/allPosts">POST</Link>
       </HeaderSearchBox>
     </HeaderTopContainer>

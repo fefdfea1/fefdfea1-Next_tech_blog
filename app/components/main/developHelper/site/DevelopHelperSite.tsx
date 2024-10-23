@@ -9,7 +9,10 @@ export default function DevelopHelperSite() {
   useEffect(() => {
     const dataFetch = async () => {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/developSitePost`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/developSitePost`,
+        {
+          cache: "no-store",
+        }
       );
       const data = await response.json();
       setDevelopSite(data.data);

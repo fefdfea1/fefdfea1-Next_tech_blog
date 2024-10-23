@@ -35,14 +35,13 @@ function createPublicDir(postUrl: string) {
 
   const split = pasteUrl.split("\\").splice(6).join("/");
   // public 폴더안의 썸네일 검색
-  let localImageUrl = glob.sync(
-    `${process.env.LOCAL_PublicDir}${split}/thumbnail.*`
-  )[0];
+  let localImageUrl = glob.sync(`public/${split}/thumbnail.*`)[0];
 
   if (localImageUrl) {
     localImageUrl = localImageUrl
       .replace(/\\/g, "/")
       .replace("public/posts/", ""); // 수정된 부분
+    console.log(localImageUrl);
   }
 
   // 썸네일 이미지 파일 검색

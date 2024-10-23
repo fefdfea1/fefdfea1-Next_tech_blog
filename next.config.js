@@ -13,8 +13,6 @@ const nextConfig = {
   },
 };
 
-if (process.env.NODE_ENV === "development") {
-  module.exports = withBundleAnalyzer(nextConfig);
-} else {
-  module.exports = nextConfig;
-}
+// module.exports = withBundleAnalyzer(nextConfig);
+
+module.exports = nextConfig;

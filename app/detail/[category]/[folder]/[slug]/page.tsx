@@ -3,9 +3,9 @@ import DetailContent from "@/app/detail/DetailContent";
 import { getPostDetail } from "@/app/fetch/getAllMdx/detailPost";
 import Giscus from "@/app/components/giscus/giscus";
 
-export default function page() {
+export default async function page() {
   const BASE_PATH = "app/post";
-  const detail = getPostDetail(BASE_PATH);
+  const detail = await getPostDetail(BASE_PATH);
   const reference = detail.reference ? detail.reference.split(",") : [];
   return (
     <>

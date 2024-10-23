@@ -9,7 +9,7 @@ import { Swiper } from "swiper/react";
 import { nanoid } from "nanoid";
 import { Scrollbar } from "swiper/modules";
 import { useMediaQuery } from "react-responsive";
-import { setImageUrl } from "@/app/utils/setImage/setImageUrl";
+
 type propsType = {
   developSiteItem: postType[];
 };
@@ -40,14 +40,7 @@ export default function Post(props: propsType) {
             <SitePost center={mobile ? "mobile" : undefined}>
               <Link href={`${item.url}`}>
                 <ImgBox>
-                  <img
-                    src={
-                      item.thumbnailUrl
-                        ? item.thumbnailUrl
-                        : "/img/noThumbnail/noImages.png"
-                    }
-                    alt="사이트 썸네일"
-                  />
+                  <img src={item.thumbnailUrl} alt="사이트 썸네일" />
                 </ImgBox>
                 <PostDescContainer>
                   <Tag tag={item.tag} usePost="site" />

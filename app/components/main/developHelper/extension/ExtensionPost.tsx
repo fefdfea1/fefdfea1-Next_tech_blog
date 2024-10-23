@@ -12,10 +12,7 @@ export default function ExtensionPost(props: propsType) {
     <ExtensionPostContainer className="extension">
       <Link href={`${props.item.url}`}>
         <Thumbnail>
-          <img
-            src={`${props.item.thumbnailUrl ? "thumbnailData" : "/img/noThumbnail/noImages.png"}`}
-            alt="익스텐션 썸네일"
-          />
+          <img src={`${props.item.thumbnailUrl}`} alt="익스텐션 썸네일" />
         </Thumbnail>
         <ExtensionDesc>
           <Tag tag={`${props.item.tag}`} usePost="site" />

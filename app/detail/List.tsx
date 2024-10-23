@@ -13,8 +13,10 @@ export default function List() {
   const [TitleArray, setTitle] = useState<indexType[]>([]);
   const ListContainerRef = useRef(null);
   useEffect(() => {
-    window.addEventListener("scroll", listScrollPosition);
-    return () => window.removeEventListener("scroll", listScrollPosition);
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", listScrollPosition);
+      return () => window.removeEventListener("scroll", listScrollPosition);
+    }
   }, []);
   useIndex(TitleArray, setTitle);
   return (

@@ -9,13 +9,11 @@ export default function DevelopHelperSite() {
   useEffect(() => {
     const dataFetch = async () => {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/developSitePost`,
-        {
-          method: "get",
-        }
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/developSitePost`
       );
       const data = await response.json();
       setDevelopSite(data.data);
+      console.log(data);
     };
     dataFetch();
   }, []);

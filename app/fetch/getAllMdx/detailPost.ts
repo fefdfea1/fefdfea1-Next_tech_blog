@@ -24,6 +24,7 @@ async function createPublicDir(postUrl: string) {
   );
   // public 썸네일 URL
   const targetDir = path.join(process.cwd(), postUrl);
+  console.log(`postUrl = ${postUrl}`);
   console.log(`targetDir = ${targetDir}`);
 
   // 썸네일 이미지 파일 검색

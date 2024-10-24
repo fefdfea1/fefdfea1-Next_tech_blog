@@ -8,7 +8,6 @@ import fsExtra from "fs-extra";
 export async function getPostDetail(postPath: string) {
   const urlSplit = postPath.split("/").splice(0, 4).join("/");
   let thumbnailUrl = await createPublicDir(urlSplit);
-
   const file = fs.readFileSync(postPath, "utf8");
   const { data, content } = matter(file);
   const grayMatter = data as postType;
@@ -23,11 +22,13 @@ async function createPublicDir(postUrl: string) {
     "posts",
     removeBasePathUrl
   );
+  // public 썸네일 URL
   const targetDir = path.join(process.cwd(), postUrl);
+  console.log(`targetDir = ${targetDir}`);
 
   // 썸네일 이미지 파일 검색
   const thumbnails = glob.sync(`${targetDir}/thumbnail.*`)[0];
-
+  console.log(`thumbnails = ${thumbnails}`);
   // 붙여넣기할 디렉토리가 존재하지 않으면 생성
   if (!fs.existsSync(pasteUrl)) {
     fsExtra.ensureDirSync(pasteUrl);

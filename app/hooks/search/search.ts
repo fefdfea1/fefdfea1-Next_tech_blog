@@ -1,9 +1,6 @@
 import { postType } from "@/app/page";
 import { Dispatch, SetStateAction, useEffect } from "react";
 
-type responseType = {
-  postArray: postType[];
-};
 export function useSearchHook(
   searchValue: string,
   setSearchList: Dispatch<SetStateAction<postType[]>>
@@ -23,7 +20,7 @@ export function useSearchHook(
           }),
         }
       );
-      const data = (await response.json()) as responseType;
+      const data = await response.json();
       setSearchList(data.postArray);
     };
     Fetch();

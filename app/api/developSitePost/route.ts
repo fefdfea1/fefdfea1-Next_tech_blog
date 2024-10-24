@@ -5,7 +5,6 @@ export const GET = async () => {
   const data = [{ data: "" }];
   try {
     const ReferenceSite = await getPostList("DevelopPost");
-    console.log(ReferenceSite);
     ReferenceSite.forEach((item) => {
       item.desc = extractContent(item.content);
     });

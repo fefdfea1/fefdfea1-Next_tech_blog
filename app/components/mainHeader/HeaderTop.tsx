@@ -4,13 +4,21 @@ import { faPenNib } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import HeaderSearch from "@/app/components/mainHeader/HeaderSearch";
 import Link from "next/link";
-import { useEffect } from "react";
-import Hamberger from "@/app/components/hamberger/Hamberger";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 export default function HeaderTop() {
+  const deskTop = useMediaQuery({
+    query: "(min-width:1024px)",
+  });
+
+  const [currentDeskTopSize, setSite] = useState(false);
+
   useEffect(() => {
-    if (!location.pathname.includes("/detail")) {
+    if (
+      !location.pathname.includes("/detail") &&
+      typeof window !== "undefined"
+    ) {
       window.addEventListener("scroll", ScrollHandler);
       return () => {
         window.removeEventListener("scroll", ScrollHandler);
@@ -18,9 +26,10 @@ export default function HeaderTop() {
     }
   }, []);
 
-  const deskTop = useMediaQuery({
-    query: "(min-width:1024px)",
-  });
+  useEffect(() => {
+    if (deskTop) setSite(true);
+    else setSite(false);
+  }, [deskTop]);
 
   return (
     <HeaderTopContainer className="header">
@@ -31,7 +40,7 @@ export default function HeaderTop() {
         </SubTitleIconBox>
       </SubTitleContainer>
       <HeaderSearchBox className="headerPost">
-        {deskTop && <HeaderSearch />}
+        {currentDeskTopSize && <HeaderSearch />}
         <Link href="/allPosts">POST</Link>
       </HeaderSearchBox>
     </HeaderTopContainer>

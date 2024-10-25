@@ -40,6 +40,7 @@ async function createPublicDir(postUrl: string) {
   }
 
   // 썸네일 파일이 존재할 경우 복사
+  console.log(publicThumbnails);
   if (publicThumbnails) {
     return `/posts/${removeBasePathUrl}/${path.basename(thumbnails)}`; // 썸네일 경로 반환
   }

@@ -10,7 +10,7 @@ export const GET = async () => {
     });
 
     return NextResponse.json(
-      { message: "성공", ReferenceSite },
+      { message: "성공", data: ReferenceSite },
       {
         status: 200,
         headers: {

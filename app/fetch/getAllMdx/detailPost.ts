@@ -33,16 +33,16 @@ async function createPublicDir(postUrl: string) {
   const publicThumbnails = glob.sync(`${targetDir}/thumbnail.*`)[0];
   // console.log(`thumbnails = ${thumbnails}`);
   // 붙여넣기할 디렉토리가 존재하지 않으면 생성
-  if (!fs.existsSync(pasteUrl)) {
+  if (!fs.existsSync(pasteUrl) && thumbnails) {
     fsExtra.ensureDirSync(pasteUrl);
+    const targetFilePath = path.join(pasteUrl, path.basename(thumbnails)); // 파일 이름을 유지하며 경로 설정
+    fsExtra.copySync(thumbnails, targetFilePath);
   }
 
   // 썸네일 파일이 존재할 경우 복사
-  if (thumbnails) {
-    const targetFilePath = path.join(pasteUrl, path.basename(thumbnails)); // 파일 이름을 유지하며 경로 설정
-    fsExtra.copySync(thumbnails, targetFilePath);
+  if (publicThumbnails) {
     return `/posts/${removeBasePathUrl}/${path.basename(thumbnails)}`; // 썸네일 경로 반환
   }
 
-  return "/posts/DevelopPost/folder/thumbnail.jpg"; // 기본 썸네일 반환
+  return "/img/noThumbnail/noImages.png"; // 기본 썸네일 반환
 }

@@ -30,11 +30,14 @@ async function createPublicDir(postUrl: string) {
   const thumbnails = glob.sync(`${targetDir}/thumbnail.*`)[0];
 
   // public 폴더 썸네일 파일 검색( 빌드시 post 안에 위치한 썸네일은 찾을 수 없어 로컬도 필요 )
-  const publicThumbnails = glob.sync(`${targetDir}/thumbnail.*`)[0];
+  const publicThumbnails = glob.sync(
+    `/posts/${removeBasePathUrl}/thumbnail.*`
+  )[0];
   // console.log(`thumbnails = ${thumbnails}`);
   // 붙여넣기할 디렉토리가 존재하지 않으면 생성
   console.log(`pasteUrl ${pasteUrl}`);
   console.log(`targetDir ${targetDir}`);
+  console.log(`publicThumbnails ${publicThumbnails}`);
   if (!fs.existsSync(pasteUrl)) {
     fsExtra.ensureDirSync(pasteUrl);
     const targetFilePath = path.join(pasteUrl, path.basename(thumbnails)); // 파일 이름을 유지하며 경로 설정

@@ -8,9 +8,15 @@ export const GET = async () => {
     ReferenceSite.forEach((item) => {
       item.desc = extractContent(item.content);
     });
+
     return NextResponse.json(
-      { message: "성공", data: ReferenceSite },
-      { status: 200 }
+      { message: "성공", ReferenceSite },
+      {
+        status: 200,
+        headers: {
+          "Cache-Control": "no-store, max-age=0", // 캐시를 무시하도록 설정"
+        },
+      }
     );
   } catch (error) {
     return NextResponse.json(

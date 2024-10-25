@@ -14,7 +14,7 @@ export default async function AllPosts() {
         <PostContainer key={nanoid()} className="postContainer">
           <Link href={post.url}>
             <ImageBox className="postsImage">
-              <Image src={`${post.thumbnailUrl}`} alt="썸네일" fill />
+              <Image src={`${post.thumbnail}`} alt="썸네일" fill />
             </ImageBox>
             <DescAndTimeBox className="DescAndTimeBox">
               <DescBox>

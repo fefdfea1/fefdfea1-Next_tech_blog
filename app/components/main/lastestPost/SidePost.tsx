@@ -28,7 +28,7 @@ export default function SidePost(props: propsType) {
                 </SidePostItemBottom>
               </SidePostLeft>
               <SidePostRight>
-                <img src={item.thumbnailUrl} alt="썸네일" />
+                <img src={item.thumbnail} alt="썸네일" />
               </SidePostRight>
             </SidePostItem>
           </Link>

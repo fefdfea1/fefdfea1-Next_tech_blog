@@ -7,11 +7,11 @@ import fsExtra from "fs-extra";
 
 export async function getPostDetail(postPath: string) {
   const urlSplit = postPath.split("/").splice(0, 4).join("/");
-  let thumbnailUrl = await createPublicDir(urlSplit);
+  let thumbnail = await createPublicDir(urlSplit);
   const file = fs.readFileSync(postPath, "utf8");
   const { data, content } = matter(file);
   const grayMatter = data as postType;
-  return { ...grayMatter, content, thumbnailUrl };
+  return { ...grayMatter, content, thumbnail };
 }
 
 async function createPublicDir(postUrl: string) {
@@ -22,14 +22,16 @@ async function createPublicDir(postUrl: string) {
     "posts",
     removeBasePathUrl
   );
-  // public 썸네일 URL
   const targetDir = path.join(process.cwd(), postUrl);
-  console.log(`postUrl = ${postUrl}`);
-  console.log(`targetDir = ${targetDir}`);
+  // console.log(`postUrl = ${postUrl}`);
+  // console.log(`targetDir = ${targetDir}`);
 
-  // 썸네일 이미지 파일 검색
+  // post 폴더 썸네일 이미지 파일 검색
   const thumbnails = glob.sync(`${targetDir}/thumbnail.*`)[0];
-  console.log(`thumbnails = ${thumbnails}`);
+
+  // public 폴더 썸네일 파일 검색( 빌드시 post 안에 위치한 썸네일은 찾을 수 없어 로컬도 필요 )
+  const publicThumbnails = glob.sync(`${targetDir}/thumbnail.*`)[0];
+  // console.log(`thumbnails = ${thumbnails}`);
   // 붙여넣기할 디렉토리가 존재하지 않으면 생성
   if (!fs.existsSync(pasteUrl)) {
     fsExtra.ensureDirSync(pasteUrl);
@@ -42,5 +44,5 @@ async function createPublicDir(postUrl: string) {
     return `/posts/${removeBasePathUrl}/${path.basename(thumbnails)}`; // 썸네일 경로 반환
   }
 
-  return "/img/noThumbnail/noImages.png"; // 기본 썸네일 반환
+  return "/posts/DevelopPost/folder/thumbnail.jpg"; // 기본 썸네일 반환
 }

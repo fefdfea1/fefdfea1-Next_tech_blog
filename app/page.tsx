@@ -14,7 +14,7 @@ export type postType = {
   title: string;
   tag: string;
   commentCount: string;
-  thumbnailUrl: string;
+  thumbnail: string;
   slug: string;
   content: string;
   category: string;

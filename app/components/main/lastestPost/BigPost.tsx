@@ -12,7 +12,7 @@ export default function BigPost(props: propsType) {
     <LastPost className="BigPost">
       <Link href={`${props.postType.url}`}>
         <Thumbnail className="BigPostImg">
-          <img src={`${props.postType.thumbnailUrl} `} alt="썸네일 없음" />
+          <img src={`${props.postType.thumbnail} `} alt="썸네일 없음" />
         </Thumbnail>
         <PostDescContainer>
           <Tag tag={props.postType ? props.postType.tag : "찾을 수 없음"} />

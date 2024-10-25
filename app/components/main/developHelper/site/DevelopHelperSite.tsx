@@ -15,8 +15,8 @@ export default function DevelopHelperSite() {
         }
       );
       const data = await response.json();
-      console.log(data);
-      setDevelopSite(data.data);
+      console.log(data.ReferenceSite);
+      setDevelopSite(data.ReferenceSite);
     };
     dataFetch();
   }, []);

@@ -40,7 +40,7 @@ export default function Post(props: propsType) {
             <SitePost center={mobile ? "mobile" : undefined}>
               <Link href={`${item.url}`}>
                 <ImgBox>
-                  <img src={item.thumbnailUrl} alt="사이트 썸네일" />
+                  <img src={item.thumbnail} alt="사이트 썸네일" />
                 </ImgBox>
                 <PostDescContainer>
                   <Tag tag={item.tag} usePost="site" />

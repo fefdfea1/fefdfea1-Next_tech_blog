@@ -23,6 +23,7 @@ export async function getThumbnail(postUrl: string) {
   const thumbnail = glob.sync(
     `public/thumbnails/${categorySlug}/thumbnail.*`
   )[0];
+  console.log("postUrl", postUrl);
   console.log("fullPath", fullPath);
   console.log("categorySlug", categorySlug);
   console.log("mdxFolderThumbnail", mdxFolderThumbnail);

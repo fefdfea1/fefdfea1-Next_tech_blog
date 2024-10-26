@@ -48,8 +48,8 @@ function develop(postUrl: string) {
 }
 
 function production(postUrl: string) {
-  const fullPath = postUrl.split("/").slice(2, 4).join("/");
-  const categorySlug = postUrl.split("/").slice(4, 6).join("/");
+  const fullPath = postUrl.split("/").slice(3, 7).join("/");
+  const categorySlug = postUrl.split("/").slice(5, 7).join("/");
   const mdxFolderThumbnail = glob.sync(`${fullPath}/thumbnail.*`)[0];
   const thumbnailsFolderThumbnail = glob.sync(
     `public/thumbnails/${categorySlug}/thumbnail.*`

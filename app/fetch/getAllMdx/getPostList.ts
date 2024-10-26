@@ -3,7 +3,7 @@ import { parsePost } from "@/app/fetch/getAllMdx/parsePost";
 import path from "path";
 
 export const getPostList = async (category?: string) => {
-  const BASE_PATH = "app/post";
+  const BASE_PATH = "/public/mdxPost";
   const defaultPostPath = path.join(process.cwd(), BASE_PATH);
   const paths: string[] = getPostPaths(defaultPostPath, category);
   const posts = await Promise.all(

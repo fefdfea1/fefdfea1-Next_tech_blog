@@ -52,10 +52,10 @@ function production(postUrl: string) {
   const categorySlug = postUrl.split("/").slice(5, 7).join("/");
   const mdxFolderThumbnail = glob.sync(`${fullPath}/thumbnail.*`)[0];
   const thumbnailsFolderThumbnail = glob.sync(
-    `public/thumbnails/${categorySlug}/thumbnail.*`
+    `${process.cwd()}/public/thumbnails/${categorySlug}/thumbnail.*`
   )[0];
   if (mdxFolderThumbnail) {
-    const pasteDir = `public/thumbnails/${categorySlug}/${path.basename(mdxFolderThumbnail)}`;
+    const pasteDir = `${process.cwd()}/public/thumbnails/${categorySlug}/${path.basename(mdxFolderThumbnail)}`;
     fsExtra.copy(mdxFolderThumbnail, pasteDir, (err) => {
       if (err) console.error(err);
       // 복사후 기존 폴더의 이미지는 삭제

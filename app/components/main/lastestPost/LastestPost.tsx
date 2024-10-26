@@ -5,12 +5,16 @@ import SidePost from "@/app/components/main/lastestPost/SidePost";
 
 export default async function LastestPost() {
   const post = await getPostList();
+  const sortData = post.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
   return (
     <LastestContainer className="lastPost">
       <LastestTitle>최신 글 ✨</LastestTitle>
       <PostContainer className="postContainer">
-        <BigPost postType={post[0]} />
-        <SidePost postType={post} />
+        <BigPost postType={sortData[0]} />
+        <SidePost postType={sortData} />
       </PostContainer>
     </LastestContainer>
   );

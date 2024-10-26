@@ -69,6 +69,10 @@ function production(postUrl: string) {
     `public/thumbnails/${categorySlug}/thumbnail.*`
   )[0];
   console.log("postUrl", postUrl);
+  console.log(
+    "thumbnailCwd",
+    `${process.cwd()}/public/thumbnails/${categorySlug}/thumbnail.*`
+  );
   console.log("fullPath", fullPath);
   console.log("categorySlug", categorySlug);
   console.log("mdxFolderThumbnail", mdxFolderThumbnail);

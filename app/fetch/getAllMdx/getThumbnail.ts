@@ -20,7 +20,7 @@ export async function getThumbnail(postUrl: string) {
     });
   }
 
-  const thumbnail = glob.sync(`/thumbnails/${categorySlug}/thumbnail.*`)[0];
+  const thumbnail = glob.sync(`**/**/**/**/thumbnail.*`)[0];
   console.log("fullPath", fullPath);
   console.log("categorySlug", categorySlug);
   console.log("mdxFolderThumbnail", mdxFolderThumbnail);

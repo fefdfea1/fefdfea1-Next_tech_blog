@@ -20,8 +20,11 @@ export async function getThumbnail(postUrl: string) {
     });
   }
 
+  console.log("fullPath", fullPath);
+  console.log("categorySlug", categorySlug);
+  console.log("mdxFolderThumbnail", mdxFolderThumbnail);
+  console.log("thumbnailsFolderThumbnail", thumbnailsFolderThumbnail);
   if (thumbnailsFolderThumbnail) {
-    console.log("thumbnailsFolderThumbnail", thumbnailsFolderThumbnail);
     return `/thumbnails/${categorySlug}/${path.basename(thumbnailsFolderThumbnail)}`;
   } else {
     // 썸네일이 없는 경우 기본 이미지 반환

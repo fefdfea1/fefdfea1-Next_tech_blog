@@ -21,6 +21,7 @@ export async function getThumbnail(postUrl: string) {
   }
 
   if (thumbnailsFolderThumbnail) {
+    console.log("thumbnailsFolderThumbnail", thumbnailsFolderThumbnail);
     return `/thumbnails/${categorySlug}/${path.basename(thumbnailsFolderThumbnail)}`;
   } else {
     // 썸네일이 없는 경우 기본 이미지 반환

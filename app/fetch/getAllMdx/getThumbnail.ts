@@ -30,15 +30,6 @@ function develop(postUrl: string) {
     });
   }
 
-  const thumbnail = glob.sync(
-    `public/thumbnails/${categorySlug}/thumbnail.*`
-  )[0];
-  console.log("postUrl", postUrl);
-  console.log("fullPath", fullPath);
-  console.log("categorySlug", categorySlug);
-  console.log("mdxFolderThumbnail", mdxFolderThumbnail);
-  console.log("thumbnailsFolderThumbnail", thumbnailsFolderThumbnail);
-  console.log("thumbnail", thumbnail);
   if (thumbnailsFolderThumbnail) {
     return `/thumbnails/${categorySlug}/${path.basename(thumbnailsFolderThumbnail)}`;
   } else {
@@ -65,19 +56,6 @@ function production(postUrl: string) {
     });
   }
 
-  const thumbnail = glob.sync(
-    `public/thumbnails/${categorySlug}/thumbnail.*`
-  )[0];
-  console.log("postUrl", postUrl);
-  console.log(
-    "thumbnailCwd",
-    `${process.cwd()}/public/thumbnails/${categorySlug}/thumbnail.*`
-  );
-  console.log("fullPath", fullPath);
-  console.log("categorySlug", categorySlug);
-  console.log("mdxFolderThumbnail", mdxFolderThumbnail);
-  console.log("thumbnailsFolderThumbnail", thumbnailsFolderThumbnail);
-  console.log("thumbnail", thumbnail);
   if (thumbnailsFolderThumbnail) {
     return `/thumbnails/${categorySlug}/${path.basename(thumbnailsFolderThumbnail)}`;
   } else {

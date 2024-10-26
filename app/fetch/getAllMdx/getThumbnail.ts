@@ -4,9 +4,11 @@ import fsExtra from "fs-extra";
 
 export async function getThumbnail(postUrl: string) {
   if (process.env.NODE_ENV === "development") {
-    develop(postUrl);
+    const thumbnail = develop(postUrl);
+    return thumbnail;
   } else {
-    production(postUrl);
+    const thumbnail = production(postUrl);
+    return thumbnail;
   }
 }
 

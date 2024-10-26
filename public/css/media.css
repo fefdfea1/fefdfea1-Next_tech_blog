@@ -31,7 +31,7 @@
   }
 
   .Giscus {
-    padding: 0px 20px;
+    padding: 0px 20px 30px 20px;
   }
 
   .listContainer {
@@ -93,7 +93,7 @@
   }
 
   .Giscus {
-    padding: 0 160px;
+    padding: 0 160px 50px 160px;
   }
 
   .listContainer {
@@ -126,7 +126,7 @@
   }
 
   .Giscus {
-    padding: 0 245px;
+    padding: 0 245px 50px 245px;
   }
 
   .allPostContainer {
@@ -148,7 +148,7 @@
   }
 
   .Giscus {
-    padding: 0 390px;
+    padding: 0 390px 50px 390px;
   }
 
   .listContainer {

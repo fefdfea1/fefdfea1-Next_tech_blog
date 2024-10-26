@@ -56,6 +56,7 @@ const Thumbnail = styled("figure", {
 
 const PostDescContainer = styled("div", {
   base: {
+    height: "calc(100% - 370px)",
     position: "relative",
     padding: "30px 39px",
   },
@@ -72,19 +73,12 @@ const BigPostTitle = styled("p", {
 const BigPostDesc = styled("p", {
   base: {
     width: "100%",
-    maxHeight: "100%",
+    height: "100%",
+    maxHeight: "47%",
     color: "#999",
     marginTop: "26px",
     fontSize: "16px",
     fontWeight: "500",
     overflow: "hidden",
-  },
-});
-
-const CommentBox = styled("div", {
-  base: {
-    position: "absolute",
-    bottom: "32px",
-    left: "30px",
   },
 });

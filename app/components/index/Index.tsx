@@ -65,7 +65,7 @@ const IndexList = styled("li", {
   base: {
     width: "100%",
     height: "40px",
-    fontSize: "20px",
+    fontSize: "15px",
     fontWeight: "700",
     borderBottom: "1px solid black",
     display: "flex",

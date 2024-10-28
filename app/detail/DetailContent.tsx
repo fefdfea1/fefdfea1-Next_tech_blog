@@ -83,21 +83,49 @@ const PosContent = styled("article", {
       fontSize: "30px",
       fontWeight: "bold",
       color: "#8088B2",
-      marginBottom: "40px",
+      marginBottom: "10px",
+
+      "&:not(h1)": {
+        marginTop: "50px",
+      },
+    },
+    "& h2:first-of-type": {
+      marginTop: "0",
     },
 
+    "& h2": {
+      fontSize: "26px",
+    },
+
+    "& h3": {
+      fontSize: "22px",
+    },
+
+    "& h4": {
+      fontSize: "18px",
+    },
+
+    "& h5": {
+      fontSize: "14px",
+    },
+
+    "& h6": {
+      fontSize: "10px",
+    },
+
+    // 구분선
     "& hr": {
       margin: "40px 0",
       border: "1px solid #374151;",
     },
-
+    // 이미지
     "& img": {
       marginTop: "30px",
       marginBottom: "30px",
       objectFit: "cover",
     },
-
-    "& b": {
+    //  강조구문
+    "& mark": {
       position: "relative",
       display: "inline-block",
       backgroundColor: "#6944a6",
@@ -111,10 +139,17 @@ const PosContent = styled("article", {
       },
     },
 
+    "& b": {
+      base: {
+        color: "#ee2323",
+        fontWeight: "400",
+      },
+    },
+    // 코드블럭
     "& code": {
       padding: "10px",
     },
-
+    // 강조구문
     "& blockquote": {
       display: "inline-block",
       width: "100%",
@@ -122,6 +157,24 @@ const PosContent = styled("article", {
       backgroundColor: "rgba(31, 41, 55,1)",
       padding: "10px",
       borderRadius: "5px",
+    },
+    // 리스트
+
+    "& ul,ol": {
+      margin: "30px 0",
+    },
+
+    "& ul": {
+      base: {
+        listStyleType: "disc",
+        marginLeft: "30px",
+      },
+    },
+    "& ol": {
+      base: {
+        listStyleType: "decimal",
+        marginLeft: "30px",
+      },
     },
   },
 });

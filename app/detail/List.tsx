@@ -21,11 +21,6 @@ export default function List() {
   useIndex(TitleArray, setTitle);
   return (
     <ListContainer className="listContainer active" ref={ListContainerRef}>
-      <ListClickBox onClick={() => clickHandler(ListContainerRef)}>
-        <ListIcon>
-          <FontAwesomeIcon icon={faList} />
-        </ListIcon>
-      </ListClickBox>
       <ItemListContainer>
         {TitleArray.map((item) => (
           <ItemList key={nanoid()}>
@@ -65,14 +60,13 @@ function listScrollPosition() {
 
 const ListContainer = styled("aside", {
   base: {
-    width: "100%",
-    maxWidth: "150px",
+    minWidth: "200px",
+    maxWidth: "300px",
     position: "fixed",
     top: "150px",
-    right: "200px",
+    right: "50px",
     backgroundColor: "primary.03",
     borderRadius: "20px",
-    opacity: "0",
     transition: "0.3s opacity",
 
     "&.active ul": {
@@ -84,28 +78,28 @@ const ListContainer = styled("aside", {
 const ItemListContainer = styled("ul", {
   base: {
     width: "100%",
-    lineHeight: "30px",
-    padding: "25px 20px",
+    lineHeight: "25px",
+    padding: "15px 20px",
     display: "none",
-  },
-});
-
-const Anchor = styled("a", {
-  base: {
-    display: "flex",
-    alignItems: "center",
   },
 });
 
 const ItemList = styled("li", {
   base: {
-    width: "100%",
     fontSize: "12px",
     fontWeight: "500",
-    textWrap: "nowrap",
     color: "#fff",
+  },
+});
+
+const Anchor = styled("a", {
+  base: {
+    maxWidth: "250px",
     overflow: "hidden",
     textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    display: "inline-block",
+    alignItems: "center",
   },
 });
 
@@ -113,7 +107,7 @@ const CaretDownIcon = styled("span", {
   base: {
     width: "8px",
     height: "8px",
-    display: "flex",
+    display: "inline-block",
     alignItems: "center",
     flexShrink: "0",
     marginRight: "5px",
@@ -126,7 +120,7 @@ const ListClickBox = styled("div", {
     height: "50px",
     position: "absolute",
     top: "-35px",
-    left: "0",
+    left: "0px",
     backgroundColor: "primary.03",
     borderRadius: "5px",
     cursor: "pointer",

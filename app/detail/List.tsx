@@ -1,7 +1,6 @@
 "use client";
 import { styled } from "@/styled-system/jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faList } from "@fortawesome/free-solid-svg-icons";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { useIndex } from "@/app/hooks/indexSet";
@@ -68,10 +67,6 @@ const ListContainer = styled("aside", {
     backgroundColor: "primary.03",
     borderRadius: "20px",
     transition: "0.3s opacity",
-
-    "&.active ul": {
-      display: "block",
-    },
   },
 });
 
@@ -80,7 +75,6 @@ const ItemListContainer = styled("ul", {
     width: "100%",
     lineHeight: "25px",
     padding: "15px 20px",
-    display: "none",
   },
 });
 
@@ -89,17 +83,20 @@ const ItemList = styled("li", {
     fontSize: "12px",
     fontWeight: "500",
     color: "#fff",
+    display: "flex", // 추가된 스타일
+    alignItems: "center", // 추가된 스타일
+    marginBottom: "5px",
   },
 });
 
 const Anchor = styled("a", {
   base: {
     maxWidth: "250px",
+    height: "100%",
     overflow: "hidden",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
-    display: "inline-block",
-    alignItems: "center",
+    display: "block",
   },
 });
 

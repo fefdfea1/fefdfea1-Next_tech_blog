@@ -123,6 +123,7 @@ const PosContent = styled("article", {
       marginTop: "30px",
       marginBottom: "30px",
       objectFit: "cover",
+      display: "inline-block",
     },
     //  강조구문
     "& mark": {
@@ -152,11 +153,13 @@ const PosContent = styled("article", {
     // 강조구문
     "& blockquote": {
       display: "inline-block",
-      width: "100%",
       height: "auto",
       backgroundColor: "rgba(31, 41, 55,1)",
-      padding: "10px",
+      padding: "20px",
       borderRadius: "5px",
+      fontSize: "16px",
+      color: "#d1d5db",
+      lineHeight: "25px",
     },
     // 리스트
 

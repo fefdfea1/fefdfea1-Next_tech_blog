@@ -22,7 +22,10 @@ export default function BigPost(props: propsType) {
           <BigPostDesc className="bigPostText">
             {props.postType ? props.postType.desc : "찾을 수 없음"}
           </BigPostDesc>
-          <ReadingTime readingTime={0} mt={"mt20"} />
+          <ReadingTime
+            readingTime={props.postType.readingMinutes}
+            mt={"mt20"}
+          />
         </PostDescContainer>
       </Link>
     </LastPost>

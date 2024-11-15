@@ -4,7 +4,7 @@ import BigPost from "@/app/components/main/lastestPost/BigPost";
 import SidePost from "@/app/components/main/lastestPost/SidePost";
 
 export default async function LastestPost() {
-  const post = await getPostList();
+  const post = await getPostList("DevelopPost");
   const sortData = post.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );

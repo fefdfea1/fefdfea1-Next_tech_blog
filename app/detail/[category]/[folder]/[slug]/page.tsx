@@ -14,7 +14,7 @@ type propsType = {
 export default async function page(path: propsType) {
   const BASE_PATH = "app/mdxPost";
   const detail = await getPostDetail(
-    `${BASE_PATH}/${path.params.category}/${path.params.folder}/${path.params.slug}.mdx`
+    `${BASE_PATH}/${path.params.category}/${path.params.folder}/${path.params.slug}.mdx`,
   );
   const reference = detail.reference ? detail.reference.split(",") : [];
   return (

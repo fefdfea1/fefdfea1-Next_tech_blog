@@ -1,0 +1,151 @@
+---
+title: "next js 블로그 만들기 도전 두 번째"
+date: "2024-11-15"
+tag: "next js"
+reference: ""
+---
+
+## Next js 블로그 만들기 디테일 페이지로 넘어가기!
+
+이번 글은 이전글에 이어 클릭시 디테일페이지로 넘어가는 로직에 대해 포스팅해보겠습니다. 이번에도 글은 이전 포스트에서도 필요한 내용을 거의 설명하여 잠시 복습하는 느낌이 될 것 같습니다.
+
+### 저번 포스팅에서 설명한 코드를 살펴보자
+
+<img src="/mdxImg/DevelopPost/createTechBlog2/detailInfoCode.png" alt="디테일 정보를 가져오는 코드"/>
+
+오늘은 이 코드에서도 getPostUrl이라는 함수에 대해 좀더 자세히 다루어 보겠습니다.
+
+### getPostUrl 함수는 어떻게 이루어져 있을까?
+
+```javascript
+getPostList 함수 내부
+
+import { getPostPaths } from "@/app/fetch/getAllMdx/getPostPaths";
+import { parsePost } from "@/app/fetch/getAllMdx/parsePost";
+import path from "path";
+
+export const getPostList = async (category?: string) => {
+  const BASE_PATH = "app/mdxPost";
+  const defaultPostPath = path.join(process.cwd(), BASE_PATH);
+  const paths: string[] = getPostPaths(defaultPostPath, category);
+  const posts = await Promise.all(
+    paths.map((postPath) => parsePost(postPath, defaultPostPath))
+  );
+  return posts;
+};
+
+
+```
+
+```javascript
+  getPostUrl 함수 내부
+
+defaultPostPath = 위 코드를 참조
+replacePath = glob을 통해 가져온 mdx 파일들의 경로는 \\로 구분되어 있는데 이것을 /하나로 바꾼 경로
+
+import path from "path";
+
+export async function getPostUrl(defaultPostPath: string, replacePath: string) {
+  let relativePath = path.relative(defaultPostPath, replacePath);
+
+  relativePath = relativePath.replace(new RegExp("\\" + path.sep, "g"), "/");
+  relativePath = relativePath.replace(/\.mdx$/, "");
+
+  // category1, title1
+  let [category, folder, slug] = relativePath.split("/");
+
+  //  /blog/category1/title1
+  const url = `detail/${category}/${folder}/${slug}`;
+
+  return { url, category, slug };
+}
+
+```
+
+(getPostList 함수는 참고용으로 올린 코드라 따로 설명은 하지 않겠습니다.)
+
+<br/>
+
+getPostUrl 함수는 포스트 폴더의 경로가 담긴 defaultPostPath와 glob으로 찾은 특정 post의 경로를 이용하여 상대적인 url을 구성합니다. 이 url을 구하기 위해 path 라이브러리의 relative 매서드를 이용하여 인자값으로 넘겨주어 post의 url 경로를 구합니다.
+
+<blockquote>
+
+path.relative 매서드란?
+
+  <br/>
+
+path.relative(인자값1,인자값2)로 구성되며 인자값 1에서 2까지의 경로를 구할 수 있습니다.
+
+</blockquote>
+
+그리고 이렇게 구한 경로는 \로 나오게 되는게 이를 정상적으로 /로 변경해줍니다. 그리고 다시한번 replace를 거쳐 .이후의 확장자를 없애 온전히 경로만을 남기게 합니다. 그럼 결과값으로 아래와 같이 남게 되는데
+
+<br/>
+
+경로예시) <b>DevelopPost/createTechBlog2/createTechBlog2</b>
+
+<br/>
+
+이를 split 매서드를 이용해 "/"를 기준으로 분리하고 앞에 details를 붙여 url을 재구성후 내보내면 로컬 경로가 아닌 상황에서도 올바른 경로를 찾아 배포가 가능합니다
+
+<hr/>
+
+## 실제로 적용!
+
+이번에는 이렇게 얻어온 url을 적용해보겠습니다 우선 이전에 만든 컴포넌트에서 getPostList 함수를 불러옵니다
+
+```javascript
+export default async function LastestPost() {
+  //포스트에 필요한 정보를 가져옴
+  const post = await getPostList();
+  // 시간이 빠른 것 부터 앞에 배치
+  const sortData = post.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
+  return (
+    <LastestContainer className="lastPost">
+      <LastestTitle>최신 글 ✨</LastestTitle>
+      <PostContainer className="postContainer">
+        <BigPost postType={sortData[0]} />
+        <SidePost postType={sortData} />
+      </PostContainer>
+    </LastestContainer>
+  );
+}
+```
+
+이렇게 불러온 정보를 props로 넘겨 사용하기만 하면 끝입니다.
+
+```javascript
+  각각의 정보들을 삽입한 모습
+
+  export default function SidePost(props: propsType) {
+  return (
+    <SidePostContainer className="sidePost">
+      {props.postType.map((item, index) => {
+        if (index === 0 || index >= 4) return null;
+        const desc = extractContent(item.content);
+        return (
+          <Link href={`${item.url}`} key={nanoid()}>
+            <SidePostItem key={nanoid()} className="sidePost">
+              <SidePostLeft>
+                <SidePostTitle>{item.title}</SidePostTitle>
+                <SidePostDesc className="text2Line">{desc}</SidePostDesc>
+                <SidePostItemBottom>
+                  <Tag tag={item.tag} />
+                  <ReadingTime readingTime={item.readingMinutes} />
+                </SidePostItemBottom>
+              </SidePostLeft>
+              <SidePostRight>
+                <img src={item.thumbnail} alt="썸네일" />
+              </SidePostRight>
+            </SidePostItem>
+          </Link>
+        );
+      })}
+    </SidePostContainer>
+  );
+}
+```
+
+이렇게 하면 정상적으로 동작하며 이제 클릭시 detail 경로로 디테일 페이지를 만들었다면 정상적으로 동작 하는 것을 볼 수 있습니다.

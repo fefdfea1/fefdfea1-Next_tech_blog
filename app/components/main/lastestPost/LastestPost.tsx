@@ -8,7 +8,6 @@ export default async function LastestPost() {
   const sortData = post.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
-  console.log(post);
   return (
     <LastestContainer className="lastPost">
       <LastestTitle>최신 글 ✨</LastestTitle>

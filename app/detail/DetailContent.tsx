@@ -152,14 +152,16 @@ const PosContent = styled("article", {
     },
     // 강조구문
     "& blockquote": {
-      display: "inline-block",
+      width: "100%",
       height: "auto",
+      display: "inline-block",
       backgroundColor: "rgba(31, 41, 55,1)",
       padding: "20px",
       borderRadius: "5px",
       fontSize: "16px",
       color: "#d1d5db",
       lineHeight: "25px",
+      margin: "20px 0",
     },
     // 리스트
 
@@ -178,6 +180,10 @@ const PosContent = styled("article", {
         listStyleType: "decimal",
         marginLeft: "30px",
       },
+    },
+
+    "& summary": {
+      cursor: "pointer",
     },
   },
 });

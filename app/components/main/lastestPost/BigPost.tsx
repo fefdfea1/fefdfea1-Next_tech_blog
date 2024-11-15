@@ -77,7 +77,7 @@ const BigPostDesc = styled("p", {
   base: {
     width: "100%",
     height: "100%",
-    maxHeight: "47%",
+    maxHeight: "145px",
     color: "#999",
     marginTop: "26px",
     fontSize: "16px",

@@ -1,5 +1,5 @@
 ---
-title: "next js 블로그 만들기 도전"
+title: "next js 블로그 만들기 도전 첫 번째"
 date: "2024-10-29"
 tag: "next js"
 reference: "https://d5br5.dev/blog/nextjs_blog/setup"
@@ -7,7 +7,7 @@ reference: "https://d5br5.dev/blog/nextjs_blog/setup"
 
 ## Next js 블로그 만들기 도전!
 
-여러 블로그 (Velog, Gatsby)등 다른 사람이 이미 만들어둔 블로그들을 이용해보면서 내가 원하는데로 바꾸기도 힘들고 전해진 방식대로만 이용하다 보니 문뜩 나도 하나 만들어볼까? 하는 생각에 Next Js 블로그를 만들게 되었습니다.
+여러 블로그 (Velog, Gatsby)등 다른 사람이 이미 만들어둔 블로그들을 이용해보면서 내가 원하는데로 바꾸기도 힘들고 정해진 방식대로만 이용하다 보니 문뜩 나도 하나 만들어볼까? 하는 생각에 Next Js 블로그를 만들게 되었습니다.
 
 ### Next js를 선택한 이유
 
@@ -50,14 +50,14 @@ Next Js로 블로그를 만들어보기 위해 이것저것 찾아보신 분들�
 
 <p >
 <img
-  src="/mdxImg/DevelopPost/createPostList/blogDir.png"
+  src="/mdxImg/DevelopPost/createTechBlog1/blogDir.png"
   alt="현재 블로그 폴더구조"
   width="200"
   style={{ height: "300px", marginRight:"100px" }}
 />
 
 <img
-src="/mdxImg/DevelopPost/createPostList/folderDir.png"
+src="/mdxImg/DevelopPost/createTechBlog1/folderDir.png"
 alt="mdx 폴더 내부 구조"
 width="240"
 style={{ height: "300px" }}
@@ -65,13 +65,13 @@ style={{ height: "300px" }}
 
 </p>
 
-그리고 그 내부의 구조를 보면 mdxPost > DevelopPost > createPostList > mdx파일 이런 식으로 각 카테고리와 개별적인 폴더 , mdx파일로 이루어져 있습니다. 이렇게 만든 이유는 각 폴더에 필요한 정보들을 넣어 관리하기 편하고 카테고리별로 게시글을 분류 할 수 있어 이렇게 만들었지만 꼭 이렇게 만들 필요없이 원하는 방식이 있다면 자유롭게 만들 수도 있습니다. 저와 동일하게 구조를 만들고 싶은분들만 이렇게 하는걸 추천드립니다.
+그리고 그 내부의 구조를 보면 mdxPost > DevelopPost > createTechBlog1 > mdx파일 이런 식으로 각 카테고리와 개별적인 폴더 , mdx파일로 이루어져 있습니다. 이렇게 만든 이유는 각 폴더에 필요한 정보들을 넣어 관리하기 편하고 카테고리별로 게시글을 분류 할 수 있어 이렇게 만들었지만 꼭 이렇게 만들 필요없이 원하는 방식이 있다면 자유롭게 만들 수도 있습니다. 저와 동일하게 구조를 만들고 싶은분들만 이렇게 하는걸 추천드립니다.
 
 <br />
 
 그럼 이번에는 MDX 파일의 내부를 살펴보도록 하겠습니다. 현재 포스트의 MDX는 아래와 같이 작성되어 있는데 여기서 가장 윗부분에 --- 내용 --- 안에 작성된 데이터들이 보이실겁니다 이 --- 안에 존재하는 데이터가 Front-Matter로 상세보기 페이지에 필요한 정보 , 반복적인 정보들이 저곳에 들어가게 됩니다.이 Front-Matter는 gray-matter를 통해 파싱을 진행하면 객체로 만들어 사용 할 수 있게 됩니다. 객체는 기능을 구현할때 console로 출력되는 값을 받아서 한번 출력해보겠습니다.
 
-<img src="/mdxImg/DevelopPost/createPostList/mdxCode.png" alt="mdx 내부코드" />
+<img src="/mdxImg/DevelopPost/createTechBlog1/mdxCode.png" alt="mdx 내부코드" />
 
 ### MDX 파일을 파싱하고 데이터를 출력해보자
 
@@ -126,13 +126,13 @@ style={{ height: "300px" }}
   POSTS_PATH: string,
   category?: string,
   slug?: string,
-  createPostList?: string
+  createTechBlog1?: string
 ) => {
   const categoryName = category || "**";
   const fileName = slug || "**";
-  const createPostListName = createPostList || "**";
+  const createTechBlog1Name = createTechBlog1 || "**";
   let postPaths = globSync(
-    `${POSTS_PATH}/${categoryName}/${createPostListName}/${fileName}.mdx`
+    `${POSTS_PATH}/${categoryName}/${createTechBlog1Name}/${fileName}.mdx`
   );
   return postPaths;
 };
@@ -178,8 +178,8 @@ export async function getPostDetail(postPath: string) {
 <details>
   <summary>콘솔 출력결과</summary>
 
-위의 코드를 출력하면 아래와 같이 이 포스트에 대한 Front-Matter가 출력됩니다. 너무 길어서 이미지를 좀 잘랐지만 아해에 readingTime도 함께 나와있습니다.
-<img src="/mdxImg/DevelopPost/createPostList/postData.png" alt="포스트 파싱 데이터"/>
+위의 코드를 출력하면 아래와 같이 이 포스트에 대한 Front-Matter가 출력됩니다. 너무 길어서 이미지를 좀 잘랐지만 아래에 readingTime도 함께 나와있습니다.
+<img src="/mdxImg/DevelopPost/createTechBlog1/postData.png" alt="포스트 파싱 데이터"/>
 
 </details>
 

@@ -4,7 +4,7 @@ import { extractContent } from "@/app/page";
 export const GET = async () => {
   const data = [{ data: "" }];
   try {
-    const ReferenceSite = await getPostList("DevelopPost");
+    const ReferenceSite = await getPostList("DevelopSite");
     ReferenceSite.forEach((item) => {
       item.desc = extractContent(item.content);
     });
@@ -16,12 +16,12 @@ export const GET = async () => {
         headers: {
           "Cache-Control": "no-store, max-age=0", // 캐시를 무시하도록 설정"
         },
-      }
+      },
     );
   } catch (error) {
     return NextResponse.json(
       { message: "불러오기 실패", data },
-      { status: 400 }
+      { status: 400 },
     );
   }
 };

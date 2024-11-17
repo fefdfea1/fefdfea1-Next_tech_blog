@@ -23,6 +23,8 @@ export type postType = {
   date: string;
   reference: string;
   readingMinutes: number;
+  postageTitle: string;
+  postageDesc: string;
 };
 
 export type indexType = {
@@ -42,7 +44,7 @@ export function extractContent(mdxString: string) {
   content = content
     .replace(
       /```javascript[\s\S]*?const MdxComponents:\s*MDXComponents\s*=\s*{[^}]*};[\s\S]*?```/g,
-      ""
+      "",
     )
     .trim();
 

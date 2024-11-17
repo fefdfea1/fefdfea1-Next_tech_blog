@@ -11,6 +11,14 @@ export function splitTag(postPath: string, data: { [key: string]: any }) {
       } else {
         const mdxFolder = glob.sync(`${postPath}`)[0];
         const pasteDir = `app/mdxPost/group/${data.tag}/${path.basename(mdxFolder)}`;
+
+        // 동일한 파일이 있는지 확인
+        if (fsExtra.pathExistsSync(pasteDir)) {
+          console.warn(`동일한 파일이 이미 존재합니다: ${pasteDir}`);
+          return;
+        }
+
+        // 파일 복사
         fsExtra.copy(mdxFolder, pasteDir, (err) => {
           if (err) console.error(err);
         });

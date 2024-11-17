@@ -2,7 +2,7 @@
 import { styled } from "@/styled-system/jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useIndex } from "@/app/hooks/indexSet";
 import { indexType } from "@/app/page";
 import { nanoid } from "nanoid";
@@ -36,24 +36,18 @@ export default function List() {
   );
 }
 
-function clickHandler(ListContainerRef: MutableRefObject<null>) {
-  const ListContainer = ListContainerRef.current as unknown as HTMLElement;
-  if (ListContainer.classList.contains("active")) {
-    ListContainer.classList.remove("active");
-  } else {
-    ListContainer.classList.add("active");
-  }
-}
-
 function listScrollPosition() {
   const scrollTop = window.scrollY;
   const listContainer = document.querySelector(".listContainer") as HTMLElement;
+  const postageContainer = document.querySelector(".postage") as HTMLElement;
   ScrollHandler();
 
   if (scrollTop >= 400) {
-    listContainer.style.opacity = "1";
+    if (listContainer) listContainer.style.opacity = "1";
+    if (postageContainer) postageContainer.style.opacity = "1";
   } else {
-    listContainer.style.opacity = "0";
+    if (listContainer) listContainer.style.opacity = "0";
+    if (postageContainer) postageContainer.style.opacity = "0";
   }
 }
 
@@ -66,6 +60,7 @@ const ListContainer = styled("aside", {
     right: "50px",
     backgroundColor: "primary.03",
     borderRadius: "20px",
+    opacity: "0",
     transition: "0.3s opacity",
   },
 });

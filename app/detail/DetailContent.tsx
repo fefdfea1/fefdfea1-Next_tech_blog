@@ -1,6 +1,6 @@
 import { styled } from "@/styled-system/jsx";
 import Index from "@/app/components/index/Index";
-import List from "@/app/detail/List";
+import List from "@/app/utils/scrollEvent/scrollEvent";
 import ReferenceSite from "@/app/components/referenceSite/ReferenceSite";
 import { postType } from "@/app/page";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -12,6 +12,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import Image from "next/image";
 import { MDXComponents } from "mdx/types";
 import Link from "next/link";
+import Postage from "@/app/components/postage/Postage";
 
 type propsType = {
   indexList: string[];
@@ -28,6 +29,10 @@ export default function DetailContent(props: propsType) {
     <ContentContainer className="detailContent">
       <Index />
       <List />
+      <Postage
+        postageTitle={props.postContent.postageTitle}
+        postageDesc={props.postContent.postageDesc}
+      />
       <PosContent>
         <MDXRemote
           source={props.postContent.content}

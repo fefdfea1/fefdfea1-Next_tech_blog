@@ -1,0 +1,522 @@
+---
+title: "파노라마 페이지 디자인 제작"
+date: "2024-11-18"
+tag: "work"
+reference: "https://hongbyul.tistory.com/entry/float-%EC%A0%81%EC%9A%A9-%EC%8B%9C-%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94-%EB%B6%80%EB%AA%A8%EC%9D%98-%EB%86%92%EC%9D%B4-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95"
+postageTitle: "저자 직강 동영상 주소"
+postageDesc: "https://www.youtube.com/watch?v=y69NW0r9k0Q&list=PLG7te9eYUi7tQydFHAv3h2YT1syQaQs1W"
+---
+
+이번에는 article의 디자인을 만들 차례입니다. 저번 포스팅의 원통형 모양에서 부터 시작하겠습니다. 하지만 8가지 모두 하기에는 시간이 너무 오래 걸리고 포스팅도 힘들어 줄여서 5가지만 만들겠습니다
+
+<br/>
+
+## 공통 스타일 지정
+
+우선은 각 article에 필요한 공통 스타일을 지정합니다. 지정해야할 스타일은 article의 공통 스타일 , 메인 화면의 배경입니다.
+
+### 배경화면 설정
+
+저희가 만들어야할 디자인을 살펴보도록 하겠습니다.
+
+<img src="/mdxImg/DevelopPost/panoramaDesign/panoramaBack.png" alt="파노라마 배경 디자인" width="700px"/>
+
+이 화면은 현재 적용할려는 디자인이 모두 적용된 모습입니다. 여기서 저희는 배경의 동영상을 먼저 제작할 예정이며 영상은 이전 포스팅에서 제공된 url에 포함되어 있습니다.
+
+<br/>
+
+그럼 곧바로 제작해서 먼저 html 부터 살펴보겠습니다. 아래의 코드를 보시면 현재 디자인하고 있는 article 외에는 모두 주석처리하고 자바스크립트도 잠시 꺼두시면 됩니다
+
+<br/>
+
+main 태그와 video 태그가 새롭게 생겼습니다. 이 태그들이 현재 배경을 구성하고 있으며 바로 아래에 css도 함께 봐주시면 좋을 것 같습니다. 그리고 앞으로는 html을 현재 활성화된 article만 보이도록 하여 길이를 좀 조절하겠습니다.
+
+<blockquote>video 태그의 
+<b>loop</b>는 무한 반복,
+ <b>mute</b>는 소리 음소거, 
+ <b>autoplay</b>는 사이트 접속시 자동 재생을 의미합니다</blockquote>
+
+```html
+// html
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>cube</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/ie.js"></script>
+    <script defer src="js/main.js"></script>
+  </head>
+  <body>
+    <main>
+      <video src="img/bg.mp4" loop autoplay mute></video>
+      <section class="section">
+        <article class="article face1" style="--num: 1">
+          <h1>ㅁㄴㅇㅁㄴㅇ</h1>
+          <div class="inner">
+            <div>
+              <p><i class="fa-brands fa-android"></i></p>
+              <h2>Android</h2>
+            </div>
+            <div>
+              <p><i class="fa-brands fa-apple"></i></p>
+              <h2>apple</h2>
+            </div>
+            <div>
+              <p><i class="fa-brands fa-twitter"></i></p>
+              <h2>twitter</h2>
+            </div>
+            <div>
+              <p><i class="fa-brands fa-facebook"></i></p>
+              <h2>faceBook</h2>
+            </div>
+            <div>
+              <p><i class="fa-brands fa-youtube"></i></p>
+              <h2>youtube</h2>
+            </div>
+            <div>
+              <p><i class="fa-brands fa-google"></i></p>
+              <h2>Android</h2>
+            </div>
+          </div>
+        </article>
+        <!-- <article class="article" style="--num: 2">
+          <h1></h1>
+          <div class="inner">
+            <div></div>
+          </div>
+        </article>
+        <article class="article" style="--num: 3">
+          <h1></h1>
+          <div class="inner">
+            <div></div>
+          </div>
+        </article>
+        <article class="article" style="--num: 4">
+          <h1></h1>
+          <div class="inner">
+            <div></div>
+          </div>
+        </article>
+        <article class="article" style="--num: 5">
+          <h1></h1>
+          <div class="inner">
+            <div></div>
+          </div>
+        </article>
+        <article class="article" style="--num: 6">
+          <h1></h1>
+          <div class="inner">
+            <div></div>
+          </div>
+        </article>
+        <article class="article" style="--num: 7">
+          <h1></h1>
+          <div class="inner">
+            <div></div>
+          </div>
+        </article>
+        <article class="article" style="--num: 8">
+          <h1></h1>
+          <div class="inner">
+            <div></div>
+          </div>
+        </article> -->
+      </section>
+    </main>
+    <!-- <script src="./js/main.js"></script> -->
+  </body>
+</html>
+```
+
+```css
+// css 
+
+main {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+main video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: fixed;
+  opacity: 0.5;
+}
+```
+
+css 코드를 보시면 main은 fixed로 화면상에 고정되었고 자식요소인 video또한 화면에서 벗어나지 않도록 설정되었습니다. src 안의 주소는 다운 받은 파일안에서 동영상의 위치를 옮기셨다면 그에 맞게 수정해주세요
+
+## article 스타일 지정
+
+이번에는 article의 스타일을 만들겠습니다. article 코드를 먼저 살펴보면 article의 자식요소로 h1과 div에 대한 코드가 추가된 것을 확인 할 수 있습니다.
+
+### h1 태그 스타일
+
+h1태그의 스타일을 살펴보면 h1은 article 요소의 왼쪽 상단에 위치하도록 absolute로 위치를 지정했습니다. 그리고 폰트를 30px로하면 opacity로 기본적으로 보이지 않도록 스타일링을 진행하였습니다 그리고 바로 아래에 hover 가상클래스를 사용하여 article에 마우스를 올릴시 노출 되도록 설정 되도록 만들어진 코드입니다.
+
+<br/>
+
+중요 포인트) <b>h1 태그는 노출되지 않다가 :hover 가장 클래스로 마우스를 올릴시 보이도록 되어있다.</b>
+
+### article 태그 안쪽 div 스타일
+
+div는 사실 영역을 분리하기 위해 사용된 태그로 앞으로 나올 아이콘들을 감싸기 위한 태그라고 생각해주시면 될 것 같습니다.
+
+### i 태그 스타일
+
+가장 안쪽에 위치한 i태그는 <b><a href="https://fontawesome.com/">Font Awesome</a></b>이라는 라이브러리를 사용하는 방법입니다. 이 라이브러리로 각각의 아이콘들을 불러와 사용할 예정인데 이 강의에서 사용하는건 예전 방식이기에 최신 방법으로 바꾸어 진행하여 다소 강의와는 조금 다를 수 있습니다.
+
+```html
+article html 코드
+<section class="section">
+  <article class="article face1" style="--num: 1">
+    <h1>제목</h1>
+    <div class="inner">
+      <div>
+        <p><i class="fa-brands fa-android"></i></p>
+        <h2>Android</h2>
+      </div>
+      <div>
+        <p><i class="fa-brands fa-apple"></i></p>
+        <h2>apple</h2>
+      </div>
+      <div>
+        <p><i class="fa-brands fa-twitter"></i></p>
+        <h2>twitter</h2>
+      </div>
+      <div>
+        <p><i class="fa-brands fa-facebook"></i></p>
+        <h2>faceBook</h2>
+      </div>
+      <div>
+        <p><i class="fa-brands fa-youtube"></i></p>
+        <h2>youtube</h2>
+      </div>
+      <div>
+        <p><i class="fa-brands fa-google"></i></p>
+        <h2>Android</h2>
+      </div>
+    </div>
+  </article>
+</section>
+```
+
+```css
+// css section 및 article 코드
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css?family=Orbitron");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+ol,
+ul {
+  list-style: none;
+}
+a {
+  outline: 0;
+  text-decoration: none;
+}
+img {
+  border: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+main {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+main video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: fixed;
+  opacity: 0.5;
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  perspective: 2000px;
+  overflow: hidden;
+  transform: scale(1.2);
+}
+
+.article {
+  width: 450px;
+  height: 700px;
+  position: absolute;
+  /* backface-visibility: hidden; */
+}
+
+.article h1 {
+  position: absolute;
+  left: 0px;
+  top: -40px;
+  font-size: 30px;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.article:hover h1 {
+  opacity: 1;
+}
+
+.inner {
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s;
+}
+
+.article > .inner:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+.article > .inner > div {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 50px;
+  position: relative;
+  opacity: 0.7;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.article > .inner > div:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+.article.face1 .inner > div {
+  width: 215px;
+  height: 220px;
+  float: left;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.inner > div p i {
+  font-size: 100px;
+  transition: all 0.5s;
+  opacity: 0.7;
+}
+
+.inner > div h2 {
+  margin-top: 20px;
+  letter-spacing: 2px;
+  transition: all 0.5s;
+}
+
+.inner > div:nth-of-type(odd) {
+  margin-right: 20px;
+}
+
+.inner > div:hover i {
+  color: lightcyan;
+  text-shadow: 0px 0px 10px aqua;
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.inner > div:hover h2 {
+  color: lightcyan;
+  text-shadow: 0px 0px 10px aqua;
+}
+
+```
+
+이렇게 작성하면 아래의 이미지와 같은 모습으로 출력됩니다. 이렇게 첫 번째 article을 완성하고 다음 article을 만들어보겠습니다.
+
+<img src="/mdxImg/DevelopPost/panoramaDesign/firstArticle.png" alt="첫 article 디자인 완성 이미지"/ >
+
+<hr />
+
+## 두 번째 article
+
+두 번째로 만들게될 article은 아래의 이미지를 만들어 보겠습니다.
+
+<img src="/mdxImg/DevelopPost/panoramaDesign/secondArticle.png" alt="두번째 article 디자인 완성 이미지" width="400px"/ >
+
+이번 디자인은 단순해서 설명할게 없으니 빠르게 넘길게요~
+
+```html
+<article class="article" style="--num: 2">
+  <h1>What's new</h1>
+  <div class="inner">
+    <div>
+      <h3>News n Articles</h3>
+      <div class="pic">
+        <img src="/img/pattern.jpg" alt="특정 패턴" />
+      </div>
+      <div class="con">
+        <h3>What is Lorem Ipsium</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga laborum,
+          accusantium quo velit fugit rem deserunt nemo, cum vel quae tempore
+          vitae voluptate! Itaque minima dicta officia incidunt nulla
+          voluptates!
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+```
+
+```css
+.inner > div > h3 {
+  margin-bottom: 10px;
+}
+
+.pic {
+  width: 100%;
+  object-fit: cover;
+}
+
+.pic img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+}
+
+.con h3 {
+  margin-bottom: 10px;
+}
+```
+
+## 세 번째 article
+
+세번째 article은 유저 프로필 카드입니다. 이것도 크게 설명할 것은 없으니 간단히 설명만 하겠습니다. 이 article은 크게 2가지로 나뉘어져 있는데 왼쪽은 사람의 이미지가 들어간 프로필 카드 오른쪽으로는 설명입니다. 이곳에서 주의깊게 볼 만한 코드가 있다면 float을 이용한 정렬과 border-radius와 overflow를 이용한 둥근 박스를 만드는 부분이라 생각해 이부분만 짚고 넘어 가겠습니다.
+
+<img   />
+
+### 정렬방법
+
+float은 익스플로러 시절 사용하던 요소들을 정렬하던 방식중 하나입니다. 이 float의 가장 큰 특징은 부모요소에게 float 속성이 걸리면 자식요소들이 부모요소의 높이를 인식하지 못해 문제가 생길 수 있습니다. 그러니 혹시 레이아웃이 이상해지는 분들은 부모요소에 준게 아닌가 확인해주세요
+
+### overflow-hidden
+
+over-hidden은 유저 프로필 이미지를 둥글게 만들기 위해 사용된 속성으로 border radius와 함께 사용됩니다. 이 속성이 들어가면 이 속성이 가진 크기보다 자식요소가 커질시 안보이게 처리되어 이미지가 모두 잘려 둥글게 보이는 것입니다.
+
+### border-radius
+
+유저 프로필을 둥글게 만들때 사용된 속성입니다 width와 height 값을 똑같이 맞추고 아래의 코드처럼 50%로 맞추면 이미지와 같이 둥글둥글한 박스를 만들 수 있습니다.
+
+```html
+<article class="article" style="--num: 3">
+  <h1>Members</h1>
+  <div class="inner">
+    <div>
+      <div class="memberCard">
+        <div class="profileBox">
+          <img src="/img/member1.jpg" alt="멤버이미지" />
+        </div>
+        <div class="infomation">
+          <h3>Member Infomation</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius,
+            temporibus. Magnam, consequatur voluptate officiis dolore vel
+            molestias debitis
+          </p>
+        </div>
+      </div>
+      <div class="memberCard">
+        <div class="profileBox">
+          <img src="/img/member2.jpg" alt="멤버이미지" />
+        </div>
+        <div class="infomation">
+          <h3>Member Infomation2</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius,
+            temporibus. Magnam, consequatur voluptate officiis dolore vel
+            molestias debitis
+          </p>
+        </div>
+      </div>
+      <div class="memberCard">
+        <div class="profileBox">
+          <img src="/img/member3.jpg" alt="멤버이미지" />
+        </div>
+        <div class="infomation">
+          <h3>Member Infomation3</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius,
+            temporibus. Magnam, consequatur voluptate officiis dolore vel
+            molestias debitis
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+```
+
+```css
+.inner > div:nth-of-type(3) {
+  padding: 0;
+}
+
+.memberCard {
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+  border: 1px solid #fff;
+  padding: 50px 15px;
+  box-sizing: border-box;
+}
+
+.memberCard:first-of-type {
+  margin-top: 0;
+}
+
+.infomation {
+  width: 280px;
+  float: left;
+  word-break: break-all;
+  margin-left: 20px;
+}
+
+.profileBox {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  float: left;
+}
+
+.memberCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+```

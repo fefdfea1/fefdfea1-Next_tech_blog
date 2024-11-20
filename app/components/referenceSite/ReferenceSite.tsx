@@ -65,7 +65,6 @@ const RefContent = styled("ul", {
 const RefItems = styled("li", {
   base: {
     width: "100%",
-    height: "40px",
     flexGrow: "1",
     display: "flex",
     borderBottom: "1px solid black",

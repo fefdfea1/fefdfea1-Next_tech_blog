@@ -1,5 +1,5 @@
 ---
-title: "파노라마 페이지 디자인 제작"
+title: "파노라마 페이지 디자인 제작1편"
 date: "2024-11-18"
 tag: "work"
 reference: "https://hongbyul.tistory.com/entry/float-%EC%A0%81%EC%9A%A9-%EC%8B%9C-%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94-%EB%B6%80%EB%AA%A8%EC%9D%98-%EB%86%92%EC%9D%B4-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95"
@@ -418,7 +418,7 @@ main video {
 
 세번째 article은 유저 프로필 카드입니다. 이것도 크게 설명할 것은 없으니 간단히 설명만 하겠습니다. 이 article은 크게 2가지로 나뉘어져 있는데 왼쪽은 사람의 이미지가 들어간 프로필 카드 오른쪽으로는 설명입니다. 이곳에서 주의깊게 볼 만한 코드가 있다면 float을 이용한 정렬과 border-radius와 overflow를 이용한 둥근 박스를 만드는 부분이라 생각해 이부분만 짚고 넘어 가겠습니다.
 
-<img   />
+<img src="/mdxImg/DevelopPost/panoramaDesign/thirdArticle.png" alt="세번째 article 디자인 완성 이미지" width="400px"/ >
 
 ### 정렬방법
 
@@ -426,11 +426,23 @@ float은 익스플로러 시절 사용하던 요소들을 정렬하던 방식중
 
 ### overflow-hidden
 
-over-hidden은 유저 프로필 이미지를 둥글게 만들기 위해 사용된 속성으로 border radius와 함께 사용됩니다. 이 속성이 들어가면 이 속성이 가진 크기보다 자식요소가 커질시 안보이게 처리되어 이미지가 모두 잘려 둥글게 보이는 것입니다.
+overflow-hidden은 유저 프로필 이미지를 둥글게 만들기 위해 사용된 속성으로 border radius와 함께 사용됩니다. 이 속성이 들어가면 이 속성이 가진 크기보다 자식요소가 커질시 안보이게 처리되어 이미지가 모두 잘려 둥글게 보이는 것입니다.
 
 ### border-radius
 
 유저 프로필을 둥글게 만들때 사용된 속성입니다 width와 height 값을 똑같이 맞추고 아래의 코드처럼 50%로 맞추면 이미지와 같이 둥글둥글한 박스를 만들 수 있습니다.
+
+### memberCard 박스
+
+memberCard는 프로필 이미지와 설명을 담기 위한 영역입니다. 그저 영역 분리의 용도로 봐주시면 될 것 같아요
+
+### profileBox 박스
+
+profileBox는 이름에서 유추 할 수 있는 프로필을 담는 공간입니다 위에서 설명한 overflow와 border-radius가 이 박스를 스타일링하는 주요 속성입니다.
+
+### infomation 박스
+
+infomation 박스는 프로필에 대하나 설명이 들어가는 곳으로 profileBox와 동일하게 float:left로 정렬하여 이미지의 오른쪽에 붙도록 하였습니다.
 
 ```html
 <article class="article" style="--num: 3">

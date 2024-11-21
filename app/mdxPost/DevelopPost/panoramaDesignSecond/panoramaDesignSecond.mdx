@@ -6,3 +6,160 @@ reference: ""
 postageTitle: ""
 postageDesc: ""
 ---
+
+## 네 번째 article
+
+<img src="/mdxImg/DevelopPost/panoramaDesignSecond/fourArticle.png" alt="four 아티클" width="400px"/>
+
+이번에는 네 번째 article을 만들어 보겠습니다. 이 article은 위 아래에 각 층으로 분리되어 있는 것이 특징이고 각 영역에 마우스를 올리면 똑같이 그 영역이 살짝 확대되는 효과를 적용할 것입니다.
+
+<br/>
+
+### 영역분리
+
+아래의 코드를 살펴보면 위쪽은 빈 div 박스와 아래의 face4BottomBox 클래스로 위 아래를 구분하고 있습니다. 그리고 css 선택자로 각각의 height 값을 고정하고 살짝 margin을 띄워 공간을 확보합니다
+
+### 마우스를 올릴시 박스들을 키우도록 설정
+
+이 부분은 전에 작성한 css가 있다면 따로 작성할 필요는 없겠지만 어떤 부분의 css가 필요한지 궁금하신 분이라면 아래에 남겨두겠습니다
+
+<details>
+  <summary>호버 css 코드</summary>
+
+```css
+.article > .inner > div:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.03);
+  opacity: 1;
+}
+```
+
+</details>
+
+<br/>
+
+비디오 박스와 아래의 박스는 이미 앞서 비슷한 형태의 디자인을 많이 해보았기 때문에 따로 하지는 않겠습니다
+
+```html
+<article class="article" style="--num: 4">
+  <h1>Advertisement</h1>
+  <div class="inner face4">
+    <div>
+      <div class="videoBox">
+        <video src="/img/intro.mp4" controls></video>
+      </div>
+      <div>
+        <h3>Promotion</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere iste
+          provident vitae doloremque ut quam assumenda cumque repudiandae
+          delectus quod velit, esse alias ab non est possimus quae asperiores
+          quaerat.
+        </p>
+      </div>
+    </div>
+    <div class="face4BottomBox">
+      <h3>Infomation</h3>
+      <div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>2024-11-18</div>
+      </div>
+    </div>
+  </div>
+</article>
+```
+
+```css
+.article .inner.face4 > div:nth-of-type(1) {
+  height: 480px;
+  padding: 0;
+  margin-right: 0;
+}
+.article .inner.face4 > div:nth-of-type(2) {
+  height: 160px;
+  margin-top: 10px;
+}
+
+.videoBox {
+  width: 100%;
+  height: 300px;
+}
+
+.videoBox > video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.face4 > div > div:nth-of-type(2) {
+  padding: 30px 20px;
+}
+
+.face4BottomBox > div > div:nth-of-type(1) {
+  float: left;
+}
+.face4BottomBox > div > div:nth-of-type(2) {
+  float: right;
+}
+```
+
+## 다섯번째 article
+
+마지막으로 다섯번째 article을 디자인해 보도록 하겠습니다.
+
+<img src="/mdxImg/DevelopPost/panoramaDesignSecond/fiveArticle.png" alt="four 아티클" width="400px"/>
+
+이 article은 크게 3가지로 영역을 분류하여 작업했습니다 로고, 이미지, 아래의 텍스트 영역으로 분류되었으며 이 부분도 코드를 보면 어렵지 않게 이해 할 수 있을것입니다. 이것도 특별히 설명해야할 부분은 없는 것 같아 따로 설명은 하지 않겠습니다.
+
+```html
+<article class="article" style="--num: 5">
+  <h1>OCOOELAB</h1>
+  <div class="inner face5">
+    <div>
+      <div class="logo">
+        <img src="/img/tit.png" alt="로고" />
+      </div>
+      <div>
+        <img src="/img/robot.png" alt="로봇 이미지" />
+      </div>
+      <div>
+        <p><i>WHO'S next?</i> <br />MASTER X MASTER</p>
+
+        <img src="/img/btn.png" alt="버튼" />
+      </div>
+    </div>
+  </div>
+</article>
+```
+
+```css
+.logo {
+  padding: 30px 0 0 20px;
+}
+
+.inner.face5 div:nth-of-type(2) {
+  width: 100%;
+}
+
+.inner.face5 div:nth-of-type(2) img {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.inner.face5 div:nth-of-type(3) {
+  font-size: 30px;
+  padding: 0 20px;
+}
+.inner.face5 div:nth-of-type(3) p i {
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.inner.face5 div:nth-of-type(3) img {
+  width: 200px;
+  margin-top: 20px;
+}
+```
